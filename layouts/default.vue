@@ -1,10 +1,21 @@
 <template>
   <div>
+    <Header/>
     <main class="main">
       <nuxt/>
     </main>
   </div>
 </template>
+
+<script>
+import Header from "~/components/partials/Header.vue";
+
+export default {
+  components: {
+    Header
+  }
+};
+</script>
 
 <style lang="stylus">
 html
@@ -24,4 +35,5 @@ body
   display flex
   flex-flow column nowrap
   justify-content space-between
+  margin 0 globalMargin;
 </style>
