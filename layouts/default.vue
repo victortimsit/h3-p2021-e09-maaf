@@ -36,4 +36,5 @@ body
   flex-flow column nowrap
   justify-content space-between
   margin 0 globalMargin;
+  padding-top headerHeight
 </style>

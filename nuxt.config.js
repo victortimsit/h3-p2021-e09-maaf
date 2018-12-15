@@ -127,6 +127,6 @@ module.exports = {
   */
   env: {
     // api_url: process.env.API_URL,
-    pkg_name: pkg.name
+    pkg_name: process.env.NAME || pkg.name
   }
 };

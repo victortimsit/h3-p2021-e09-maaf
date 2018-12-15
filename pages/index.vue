@@ -1,13 +1,22 @@
 <template>
-  <div>HOME</div>
+  <div>{{ data }}</div>
 </template>
 
 <script>
-// import Component from '~/components/Component.vue'
+import data from "~/assets/data/index.json";
+// import Hero from "~/components/sections/Home/Hero.vue";
 
 export default {
   components: {
-    // Component
+    // Hero
+  },
+  head: {
+    title: `${process.env.pkg_name} - ${data.page.title}`
+  },
+  data() {
+    return {
+      data
+    };
   }
 };
 </script>

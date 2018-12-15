@@ -12,7 +12,7 @@
   top 0
   left 0
   padding 0 globalMargin
-  height 80px
+  height headerHeight
   display flex
   align-items center
   width 100%
