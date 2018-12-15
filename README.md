@@ -1,6 +1,8 @@
-# h3-p2021-e09-maaf
+# MAAF Auto
 
-> A project about MAAF insurance
+This is a WordPress school project at [HETIC](https://www.hetic.net/)
+
+Visit site [here](https://ugarden.edhbr.fr)!
 
 ## Build Setup
 
