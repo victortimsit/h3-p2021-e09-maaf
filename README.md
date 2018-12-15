@@ -2,11 +2,11 @@
 
 This is a WordPress school project at [HETIC](https://www.hetic.net/)
 
-Visit site [here](https://ugarden.edhbr.fr)!
+Visit site [here](https://maafauto.edhbr.fr)!
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 
