@@ -10,41 +10,88 @@ module.exports = {
   */
   head: {
     title: pkg.name,
+    htmlAttrs: {
+      lang: "en"
+    },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: pkg.description }
+      { hid: "description", name: "description", content: pkg.description },
+      { name: "msapplication-TileColor", content: "#2b5797" },
+      { name: "theme-color", content: "#ffffff" }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    script: [
+      // {
+      //   src: SRC,
+      //   defer: "", // delete key to false
+      //   async: "", // delete key to false
+      //   body: true // in body if true
+      // }
+    ],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32x32.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16x16.png"
+      },
+      {
+        rel: "manifest",
+        href: "/site.webmanifest"
+      },
+      {
+        rel: "mask-icon",
+        href: "/safari-pinned-tab.svg",
+        color: "#5bbad5"
+      }
+    ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: "#fff" },
+  loading: { color: "#000" },
 
   /*
   ** Global CSS
   */
-  css: [],
+  css: ["~/assets/vendor/css/reset.css"],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: ["~/plugins/globals.js"],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "cookie-universal-nuxt",
+    [
+      "nuxt-stylus-resources-loader",
+      resolve(__dirname, "assets/stylus/main.styl")
+    ]
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    // baseURL: process.env.API_URL
   },
 
   /*
@@ -65,5 +112,21 @@ module.exports = {
         });
       }
     }
+  },
+
+  /*
+  ** Server configuration
+  */
+  server: {
+    port: 8016,
+    host: "0.0.0.0"
+  },
+
+  /*
+  ** Env
+  */
+  env: {
+    // api_url: process.env.API_URL,
+    pkg_name: pkg.name
   }
 };
