@@ -1,5 +1,5 @@
 <template>
-  <div class="hero">
+  <div ref="hero" class="hero">
     <section class="sub">
       <transition
         appear
@@ -48,7 +48,11 @@ export default {
   },
   methods: {
     scrollHero: function() {
-      window.scroll({ top: window.innerHeight, left: 0, behavior: "smooth" });
+      window.scroll({
+        top: this.$refs.hero.clientHeight,
+        left: 0,
+        behavior: "smooth"
+      });
     }
   }
 };
@@ -63,14 +67,14 @@ export default {
 section
   display flex
   align-items flex-end
-  padding 0 globalMargin * 2 35vh globalMargin * 2
+  padding headerHeight globalMargin * 2 35vh globalMargin * 2
   border-bottom headerHeight solid blue
-  z-index 1
+  z-index 2
 
   @media screen and (max-width: desktop)
-    padding 0 globalMargin 35vh globalMargin
+    padding headerHeight globalMargin 35vh globalMargin
   @media screen and (max-width: mobile)
-    padding 0 globalMargin 10vh globalMargin
+    padding headerHeight globalMargin 10vh globalMargin
 
 .sub
   display flex

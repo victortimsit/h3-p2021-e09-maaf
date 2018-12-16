@@ -17,6 +17,7 @@
   align-items center
   width 100%
   background linear-gradient(white, rgba(white, .9) 60%, transparent)
+  z-index 1
 
   @media screen and (max-width: mobile)
     justify-content center
