@@ -1,3 +1,32 @@
+h1
+  fontsize(42px)
+  font-weight 900
+  margin-bottom 40px
+
+h2
+  fontsize(32px)
+  font-weight 900
+  margin-bottom 30px
+
+h3
+  fontsize(28px)
+  font-weight 600
+  margin-bottom 30px
+
+h4
+  fontsize(20px)
+  font-weight 400
+  line-height 1.4
+  margin-bottom 30px
+
+h1, h2, h3, h4
+  line-height 1.2
+
+p, .text
+  fontsize(16px)
+  font-weight 300
+  line-height 1.6
+
 .centered
   text-align center
 
@@ -15,3 +44,14 @@ strong, .bold
 
 em, .italic
   font-style italic
+
+a
+  text-decoration none
+
+.softHover
+  opacity .85
+  transition opacity .3s ease
+  will-change opacity
+
+  &:hover
+    opacity 1

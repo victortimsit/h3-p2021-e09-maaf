@@ -1,14 +1,23 @@
 <template>
-  <div>{{ data }}</div>
+  <div>
+    <Hero :data="data.sections.hero"/>
+    <Info v-for="(info, index) in data.sections.infos" :key="index" :type="info.type" :data="info"/>
+    <Comments :data="data.sections.comments"/>
+  </div>
 </template>
 
 <script>
 import data from "~/assets/data/index.json";
-// import Hero from "~/components/sections/Home/Hero.vue";
+
+import Hero from "~/components/sections/Home/Hero.vue";
+import Info from "~/components/sections/Home/Info.vue";
+import Comments from "~/components/sections/Home/Comments.vue";
 
 export default {
   components: {
-    // Hero
+    Hero,
+    Info,
+    Comments
   },
   head: {
     title: `${process.env.pkg_name} - ${data.page.title}`
@@ -20,6 +29,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="stylus">
-</style>

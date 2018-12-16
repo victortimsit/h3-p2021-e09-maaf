@@ -55,6 +55,11 @@ module.exports = {
         rel: "mask-icon",
         href: "/safari-pinned-tab.svg",
         color: "#5bbad5"
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
       }
     ]
   },

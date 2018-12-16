@@ -2,9 +2,75 @@
   "page": {
     "title": "MAAF 2.0 La nouvelle assurance automobile"
   },
-  "section": {
+  "sections": {
     "hero": {
-      "punchline": "punchline test"
+      "sub": {
+        "punchline": "Votre véhicule, assuré, en 10 minutes.",
+        "cta": "Démarrer maintenant"
+      },
+      "more": {
+        "punchline": "L'assurance automobile maintenant simple.",
+        "cta": "Découvrir"
+      }
+    },
+    "infos": [
+      {
+        "type": "left",
+        "image": {
+          "src": "assets/images/placeHolderScreen1.png",
+          "alt": "infoLeft"
+        },
+        "punchline": "Toutes vos assurances automobile, gérées depuis une seule application.",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
+      },
+      {
+        "type": "center",
+        "image": {
+          "src": "assets/images/maafAndWaze.png",
+          "alt": "maafAndWaze"
+        },
+        "punchline": "MAAF vous accompagne lors de tous vos trajets, et bien plus avec Waze !",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
+      },
+      {
+        "type": "right",
+        "image": {
+          "src": "assets/images/placeHolderScreen2.png",
+          "alt": "infoRight"
+        },
+        "punchline": "Eh bien plus...",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
+      }
+    ],
+    "comments": {
+      "punchline": "Ce que nos assurés en pensent",
+      "desc": "La première assurance automobile avec plus de <strong>92%</strong> de satisfaction client ! *",
+      "comments": [
+        {
+          "image": {
+            "src": "assets/images/clients/jeanne.jpg",
+            "alt": "jeanne"
+          },
+          "desc": "Grâce à MAAF automobile j'ai pu changer d'assurance et assurer mes deux véhicules en 10 minutes, l'application est très intuitive !",
+          "name": "Jeanne"
+        },
+        {
+          "image": {
+            "src": "assets/images/clients/cecile.jpg",
+            "alt": "cecile"
+          },
+          "desc": "On était tombé en panne sur l'autoroute et tout ce que j'ai eu à faire c'est de le dire sur l'application, la MAAF s'est ensuite occupé de tout et on a pu voir le dépanneur arriver sur l'application.",
+          "name": "Cecile"
+        },
+        {
+          "image": {
+            "src": "assets/images/clients/romain.jpg",
+            "alt": "romain"
+          },
+          "desc": "Venant d'obtenir mon permis moto je m'en étais acheté une, grâce à MAAF automobile elle a pu être assuré le jour même de sa réception.",
+          "name": "Romain"
+        }
+      ]
     }
   }
 }

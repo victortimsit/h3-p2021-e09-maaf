@@ -4,15 +4,18 @@
     <main class="main">
       <nuxt/>
     </main>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Header from "~/components/partials/Header.vue";
+import Footer from "~/components/partials/Footer.vue";
 
 export default {
   components: {
-    Header
+    Header,
+    Footer
   }
 };
 </script>
@@ -35,6 +38,4 @@ body
   display flex
   flex-flow column nowrap
   justify-content space-between
-  margin 0 globalMargin;
-  padding-top headerHeight
 </style>
