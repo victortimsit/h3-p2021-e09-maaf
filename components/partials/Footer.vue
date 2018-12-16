@@ -45,7 +45,7 @@
                 title="YouTube"
                 target="blank"
               >
-                <img src="~/assets/icons/YouTube.svg" alt="youTube">
+                <img src="~/assets/icons/youTube.svg" alt="youTube">
               </Smart-Link>
             </li>
           </ul>
