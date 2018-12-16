@@ -8,6 +8,7 @@
       <div class="wrapper">
         <CardComment v-for="(comment, index) in data.comments" :key="index" :data="comment"/>
       </div>
+      <div class="disclaimer">{{ data.disclaimer }}</div>
     </Container>
   </div>
 </template>
@@ -32,7 +33,10 @@ export default {
 .comments
   background url("~assets/images/carBackground.svg")
   background-size 150%
+
+.container
   padding globalMargin * 4 0
+  position relative
 
 .header
   h1
@@ -53,4 +57,11 @@ export default {
       &:not(:first-child)
         margin-top globalMargin
 
+.disclaimer
+  fontsize(11px)
+  font-weight 300
+  text-align right
+  position absolute
+  bottom 10px
+  right 0
 </style>
