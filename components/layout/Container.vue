@@ -10,7 +10,9 @@
   width calc(100% - 24vw)
 
   @media screen and (max-width: desktop)
-    width calc(100% - globalMargin * 4)
+    offset = globalMargin * 4
+    width calc(100% - offset)
   @media screen and (max-width: tablet)
-    width calc(100% - globalMargin * 2)
+    offset = globalMargin * 2
+    width calc(100% - offset)
 </style>
