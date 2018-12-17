@@ -1,32 +1,44 @@
 <template>
   <div ref="hero" class="hero">
-    <section class="sub">
-      <transition
-        appear
-        mode="out-in"
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+    <div class="primary">
+      <section class="sub">
         <div class="wrapper">
           <h1>{{ data.sub.punchline }}</h1>
           <BasicCTA>
-            <Smart-Link href="/subscribe">{{ data.sub.cta }}</Smart-Link>
+            <SmartLink href="/subscribe/start">{{ data.sub.cta }}</SmartLink>
           </BasicCTA>
         </div>
-      </transition>
-    </section>
-    <section class="more">
-      <transition
-        appear
-        mode="out-in"
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+      </section>
+      <section class="more">
         <div class="wrapper">
+          <div class="img">
+            <img src="~/assets/images/vehicles.svg" alt="vehicles">
+          </div>
           <h4>{{ data.more.punchline }}</h4>
-          <BasicButton @click.native="scrollHero">{{ data.more.cta }}</BasicButton>
+          <BasicButton class="fullWidth" @click.native="scrollHero">{{ data.more.cta }}</BasicButton>
         </div>
-      </transition>
+      </section>
+    </div>
+    <section class="info">
+      <Container>
+        <div class="download">
+          <SmartLink
+            href="https://play.google.com/store"
+            title="Téléchargez l'application pour Android"
+            target="blank"
+          >
+            <img src="~/assets/icons/googlePlay.svg" alt="googlePlay">
+          </SmartLink>
+          <SmartLink
+            href="https://www.apple.com/lae/ios/app-store/"
+            title="Téléchargez l'application pour IOS"
+            target="blank"
+          >
+            <img src="~/assets/icons/appStore.svg" alt="appStore">
+          </SmartLink>
+        </div>
+        <div class="text">{{ data.info.punchline }}</div>
+      </Container>
     </section>
   </div>
 </template>
@@ -59,16 +71,14 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.hero
-  min-height 100vh
+.primary
   display flex
-  align-items stretch
 
-section
+.sub, .more
   display flex
   align-items flex-end
+  min-height "calc(100vh - %s)" % headerHeight
   padding headerHeight globalMargin * 2 30vh globalMargin * 2
-  border-bottom headerHeight solid blue
 
   @media screen and (max-width: desktop)
     padding headerHeight globalMargin 30vh globalMargin
@@ -85,28 +95,60 @@ section
     content ""
     position absolute
     bottom 0
-    left globalMargin
+    left 0
     z-index -1
-    opacity .6
+    opacity 1
     display block
-    width 80%
+    width 100%
     height 80%
-    background url("~assets/images/news.svg") bottom left no-repeat
-    background-size contain
+    background url("~assets/images/news.svg")no-repeat
+    background-size auto 100%
+    background-position 5vw 100%
+
+    @media screen and (max-width: tablet)
+      background-position -5vw 100%
 
   .wrapper
     flex 0 0 40%
 
-    @media screen and (max-width: mobile)
+    @media screen and (max-width: tablet)
       flex 0 0 70%
 
 .more
   background blue
   color white
   flex 20%
-  @media screen and (max-width: mobile)
+  @media screen and (max-width: tablet)
     display none
-
-  .basicButton
+  
+  .img
     width 100%
+    height 160px
+    margin 0 auto
+    background white
+    display flex
+    align-items center
+    padding 8px
+    border-radius 30px
+    margin-bottom globalMargin
+
+    img
+      width 100%
+
+.info
+  background blue
+  color white
+
+  .container
+    height headerHeight
+    display flex
+    align-items center
+    justify-content space-between
+
+    @media screen and (max-width: tablet)
+      justify-content center
+
+  .text
+    @media screen and (max-width: tablet)
+      display none
 </style>

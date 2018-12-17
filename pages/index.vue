@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <Hero :data="data.sections.hero"/>
     <Info v-for="(info, index) in data.sections.infos" :key="index" :type="info.type" :data="info"/>
     <Comments :data="data.sections.comments"/>
@@ -20,12 +20,16 @@ export default {
     Comments
   },
   head: {
-    title: `${process.env.pkg_name} - ${data.page.title}`
+    title: `${data.page.title}`
   },
   data() {
     return {
       data
     };
+  },
+  transition: {
+    enterActiveClass: "animated fadeIn faster",
+    leaveActiveClass: "animated fadeOut faster"
   }
 };
 </script>

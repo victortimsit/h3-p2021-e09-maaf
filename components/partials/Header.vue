@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <Smart-Link href="/" title="MAAF Automobile" class="logo">
+    <SmartLink href="/" title="MAAF Automobile" class="logo">
       <img src="~/assets/icons/maafAuto.svg" alt="MAAF Automobile">
-    </Smart-Link>
+    </SmartLink>
   </header>
 </template>
 
@@ -16,7 +16,7 @@
   display flex
   align-items center
   width 100%
-  @media screen and (max-width: mobile)
+  @media screen and (max-width: tablet)
     justify-content center
 
 .logo

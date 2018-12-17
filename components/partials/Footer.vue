@@ -3,50 +3,46 @@
     <div class="wrapper">
       <div class="linked">
         <div class="download">
-          <Smart-Link
+          <SmartLink
             href="https://play.google.com/store"
             title="Téléchargez l'application pour Android"
             target="blank"
           >
             <img src="~/assets/icons/googlePlay.svg" alt="googlePlay">
-          </Smart-Link>
-          <Smart-Link
+          </SmartLink>
+          <SmartLink
             href="https://www.apple.com/lae/ios/app-store/"
             title="Téléchargez l'application pour IOS"
             target="blank"
           >
             <img src="~/assets/icons/appStore.svg" alt="appStore">
-          </Smart-Link>
+          </SmartLink>
         </div>
         <div class="socials">
           <ul>
             <li>
-              <Smart-Link
+              <SmartLink
                 href="https://www.facebook.com/maafassurances"
                 title="Facebook"
                 target="blank"
               >
                 <img src="~/assets/icons/facebook.svg" alt="facebook">
-              </Smart-Link>
+              </SmartLink>
             </li>
             <li>
-              <Smart-Link href="https://twitter.com/MAAFAssurances" title="Twitter" target="blank">
+              <SmartLink href="https://twitter.com/MAAFAssurances" title="Twitter" target="blank">
                 <img src="~/assets/icons/twitter.svg" alt="twitter">
-              </Smart-Link>
+              </SmartLink>
             </li>
             <li>
-              <Smart-Link href="https://plus.google.com/+MaafFr" title="Google+" target="blank">
+              <SmartLink href="https://plus.google.com/+MaafFr" title="Google+" target="blank">
                 <img src="~/assets/icons/googlePlus.svg" alt="googlePlus">
-              </Smart-Link>
+              </SmartLink>
             </li>
             <li>
-              <Smart-Link
-                href="https://www.youtube.com/LaChaineMAAF"
-                title="YouTube"
-                target="blank"
-              >
+              <SmartLink href="https://www.youtube.com/LaChaineMAAF" title="YouTube" target="blank">
                 <img src="~/assets/icons/youTube.svg" alt="youTube">
-              </Smart-Link>
+              </SmartLink>
             </li>
           </ul>
         </div>
@@ -54,19 +50,19 @@
       <nav class="nav">
         <ul>
           <li>
-            <Smart-Link href="https://www.maaf.fr/fr/assurance" title="MAAF">MAAF</Smart-Link>
+            <SmartLink href="https://www.maaf.fr/fr/assurance" title="MAAF">MAAF</SmartLink>
           </li>
           <li>
-            <Smart-Link href="/" title="Documents légaux">Documents légaux</Smart-Link>
+            <SmartLink href="/" title="Documents légaux">Documents légaux</SmartLink>
           </li>
           <li>
-            <Smart-Link href="/" title="Politique de confidentialité">Politique de confidentialité</Smart-Link>
+            <SmartLink href="/" title="Politique de confidentialité">Politique de confidentialité</SmartLink>
           </li>
           <li>
-            <Smart-Link href="/" title="Mentions légales">Mentions légales</Smart-Link>
+            <SmartLink href="/" title="Mentions légales">Mentions légales</SmartLink>
           </li>
           <li>
-            <Smart-Link href="/" title="A propos">A propos</Smart-Link>
+            <SmartLink href="/" title="A propos">A propos</SmartLink>
           </li>
         </ul>
       </nav>
@@ -74,7 +70,7 @@
     <div
       class="disclaimer"
     >Ce travail a été réalisé dans le cadre d'un projet pédagogique et à des fins pédagogiques, les droits d'exploitation n'ont pas fait l'object d'une vérification, ni d'une acquisition, contact:
-      <Smart-Link href="https://edhbr.fr" target="blank">edhbr.fr</Smart-Link>
+      <SmartLink href="https://edhbr.fr" target="blank">edhbr.fr</SmartLink>
     </div>
   </footer>
 </template>

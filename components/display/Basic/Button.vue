@@ -25,7 +25,7 @@ export default {
   font-weight 600
   padding 12px 24px
   display inline-block
-  border-radius 5px
+  border-radius 30px
   cursor pointer
   color white
   background darkBlue
