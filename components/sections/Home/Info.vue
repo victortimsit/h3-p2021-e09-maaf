@@ -42,7 +42,7 @@ export default {
   display flex
   align-items center
   height 100%
-  min-height 80vh
+  min-height 70vh
 
 .info
   .wrapper, .img
@@ -65,6 +65,10 @@ export default {
     max-width 100%
     max-height 100%
 
+    @media screen and (max-width: mobile)
+      max-width 90%
+      max-height 90%
+
 // Left case
 .infoLeft
   .container
@@ -72,9 +76,6 @@ export default {
 
     @media screen and (max-width: mobile)
       flex-flow column nowrap
-
-  .img img
-    transform rotateZ(10deg)
 
 // Center case
 .infoCenter
@@ -89,9 +90,8 @@ export default {
     flex 0 0 auto
 
   .img
-    padding globalMargin
-    @media screen and (min-width: mobile)
-      margin-bottom 100px
+    padding globalMargin * 2 0
+    width 80%
 
   .wrapper
     @media screen and (min-width: tablet)
@@ -105,7 +105,4 @@ export default {
 
     @media screen and (max-width: mobile)
       flex-flow column nowrap
-
-    .img img
-      transform rotateZ(-10deg)
 </style>

@@ -8,20 +8,16 @@
 
 <style scoped lang="stylus">
 .header
-  position fixed
+  position absolute
   top 0
   left 0
-  padding 0 globalMargin headerHeight * 0.5 globalMargin
-  height headerHeight * 1.5
+  padding 0 globalMargin
+  height headerHeight
   display flex
   align-items center
   width 100%
-  background linear-gradient(white, rgba(white, .9) 60%, transparent)
-  z-index 1
-
   @media screen and (max-width: mobile)
     justify-content center
-    position absolute
 
 .logo
   max-width 80%

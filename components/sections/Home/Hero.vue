@@ -67,12 +67,11 @@ export default {
 section
   display flex
   align-items flex-end
-  padding headerHeight globalMargin * 2 35vh globalMargin * 2
+  padding headerHeight globalMargin * 2 30vh globalMargin * 2
   border-bottom headerHeight solid blue
-  z-index 2
 
   @media screen and (max-width: desktop)
-    padding headerHeight globalMargin 35vh globalMargin
+    padding headerHeight globalMargin 30vh globalMargin
   @media screen and (max-width: mobile)
     padding headerHeight globalMargin 10vh globalMargin
 
@@ -80,8 +79,22 @@ section
   display flex
   justify-content center
   flex 1 1 80%
-  background url("~assets/images/carBackground.svg")
-  background-size 150%
+  // background url("~assets/images/carBackground.svg")
+  // background-size 150%
+  position relative
+
+  &::after
+    content ""
+    position absolute
+    bottom 0
+    left globalMargin
+    z-index -1
+    opacity .75
+    display block
+    width 80%
+    height 80%
+    background url("~assets/images/news.svg") bottom left no-repeat
+    background-size contain
 
   .wrapper
     flex 0 0 40%

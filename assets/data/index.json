@@ -17,26 +17,35 @@
       {
         "type": "left",
         "image": {
-          "src": "assets/images/placeHolderScreen1.png",
-          "alt": "infoLeft"
+          "src": "assets/images/undraw/mobileApp.svg",
+          "alt": "mobileApp"
         },
         "punchline": "Toutes vos assurances automobile, gérées depuis une seule application.",
         "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
       },
       {
-        "type": "center",
+        "type": "right",
         "image": {
-          "src": "assets/images/maafAndWaze.png",
-          "alt": "maafAndWaze"
+          "src": "assets/images/undraw/settings.svg",
+          "alt": "settings"
         },
-        "punchline": "MAAF vous accompagne lors de tous vos trajets, et bien plus avec Waze !",
+        "punchline": "Une assurance complètement sur mesure, choisissez uniquement ce dont vous avez besoin.",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
+      },
+      {
+        "type": "left",
+        "image": {
+          "src": "assets/images/undraw/booking.svg",
+          "alt": "booking"
+        },
+        "punchline": "Ajoutez des conducteurs à la volée !",
         "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
       },
       {
         "type": "right",
         "image": {
-          "src": "assets/images/placeHolderScreen2.png",
-          "alt": "infoRight"
+          "src": "assets/images/undraw/offroad.svg",
+          "alt": "offroad"
         },
         "punchline": "Eh bien plus...",
         "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
