@@ -79,8 +79,6 @@ section
   display flex
   justify-content center
   flex 1 1 80%
-  // background url("~assets/images/carBackground.svg")
-  // background-size 150%
   position relative
 
   &::after
@@ -89,7 +87,7 @@ section
     bottom 0
     left globalMargin
     z-index -1
-    opacity .75
+    opacity .6
     display block
     width 80%
     height 80%
