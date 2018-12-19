@@ -1,8 +1,8 @@
 # MAAF Auto
 
-This is a WordPress school project at [HETIC](https://www.hetic.net/)
+This is a school project at [HETIC](https://www.hetic.net/)
 
-Visit site [here](https://maafauto.edhbr.fr)!
+Visit site [here](https://maaf.edhbr.fr)!
 
 ## Build Setup
 
