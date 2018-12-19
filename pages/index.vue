@@ -1,35 +1,62 @@
 <template>
-  <div class="home">
-    <Hero :data="data.sections.hero"/>
-    <Info v-for="(info, index) in data.sections.infos" :key="index" :type="info.type" :data="info"/>
-    <Comments :data="data.sections.comments"/>
+  <div class="chat">
+    <Header :title="$store.state.scenario.name"/>
+    <ChatArea :data="$store.state.scenario"/>
   </div>
 </template>
 
 <script>
-import data from "~/assets/data/index.json";
-
-import Hero from "~/components/sections/Home/Hero.vue";
-import Info from "~/components/sections/Home/Info.vue";
-import Comments from "~/components/sections/Home/Comments.vue";
+import Header from "~/components/sections/Chat/Header.vue";
+import ChatArea from "~/components/sections/Chat/Area.vue";
 
 export default {
   components: {
-    Hero,
-    Info,
-    Comments
+    Header,
+    ChatArea
   },
   head: {
-    title: `${data.page.title}`
-  },
-  data() {
-    return {
-      data
-    };
-  },
-  transition: {
-    enterActiveClass: "animated fadeIn faster",
-    leaveActiveClass: "animated fadeOut faster"
+    title: "Chat MAAF 2.0"
   }
 };
 </script>
+
+<style scoped lang="stylus">
+.chat
+  background white
+  width 100%
+  height 100vh
+  padding-bottom 34px
+  display flex
+  flex-flow column nowrap
+  justify-content space-between
+
+  @media screen and (min-width: desktop)
+    width 374px
+    height 812px
+    padding-top 28px
+    position relative
+
+    &::before, &::after
+      content ""
+      position absolute
+      display block
+      pointer-events none
+
+    &::before
+      bottom 8px
+      left calc(50% - 65px)
+      height 5px
+      width 130px
+      background black
+      opacity .5
+      border-radius 10px
+
+    &::after
+      top -10%
+      left -10%
+      display block
+      width 120%
+      height 120%
+      background url("~assets/images/iphoneBG.png") center no-repeat
+      background-size 104%
+</style>

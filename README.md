@@ -1,4 +1,4 @@
-# MAAF Auto
+# MAAF Chat
 
 This is a school project at [HETIC](https://www.hetic.net/)
 

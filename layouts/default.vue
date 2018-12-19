@@ -1,24 +1,8 @@
 <template>
   <div class="globalContainer">
-    <Header/>
-    <main class="main">
-      <nuxt/>
-    </main>
-    <Footer/>
+    <nuxt/>
   </div>
 </template>
-
-<script>
-import Header from "~/components/partials/Header.vue";
-import Footer from "~/components/partials/Footer.vue";
-
-export default {
-  components: {
-    Header,
-    Footer
-  }
-};
-</script>
 
 <style lang="stylus">
 html
@@ -37,6 +21,7 @@ html
   min-height 100vh
   display flex
   flex-flow column nowrap
-  justify-content space-between
-  overflow-x hidden
+  justify-content center
+  align-items center
+  overflow hidden
 </style>

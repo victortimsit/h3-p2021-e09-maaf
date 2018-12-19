@@ -1,89 +1,73 @@
 {
-  "page": {
-    "title": "MAAF 2.0 La nouvelle assurance automobile"
-  },
-  "sections": {
-    "hero": {
-      "sub": {
-        "punchline": "Votre véhicule, assuré, en 10 minutes.",
-        "cta": "Démarrer maintenant"
-      },
-      "more": {
-        "punchline": "L'assurance automobile maintenant simple.",
-        "cta": "Découvrir"
-      },
-      "info": {
-        "punchline": "MAAF 2.0, vôtre écosystème d'applications d'assurance."
-      }
+  "assistants": [
+    {
+      "name": "Julie",
+      "image": "assets/images/assistants/julie.jpg",
+      "gender": "woman"
     },
-    "infos": [
-      {
-        "type": "left",
-        "image": {
-          "src": "assets/images/undraw/mobileApp.svg",
-          "alt": "mobileApp"
-        },
-        "punchline": "Toutes vos assurances automobile, gérées depuis une seule application.",
-        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
-      },
-      {
-        "type": "right",
-        "image": {
-          "src": "assets/images/undraw/settings.svg",
-          "alt": "settings"
-        },
-        "punchline": "Une assurance complètement sur mesure, choisissez uniquement ce dont vous avez besoin.",
-        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
-      },
-      {
-        "type": "left",
-        "image": {
-          "src": "assets/images/undraw/booking.svg",
-          "alt": "booking"
-        },
-        "punchline": "Ajoutez des conducteurs à la volée !",
-        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
-      },
-      {
-        "type": "right",
-        "image": {
-          "src": "assets/images/undraw/offroad.svg",
-          "alt": "offroad"
-        },
-        "punchline": "Eh bien plus...",
-        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ad. Officiis accusantium eius est. Dolor officia reiciendis sit accusamus harum reprehenderit quasi ratione eius magni beatae, cupiditate sed nam voluptatem?"
-      }
-    ],
-    "comments": {
-      "punchline": "Ce que nos assurés en pensent",
-      "desc": "La première assurance automobile avec plus de <strong>92%</strong> de satisfaction client ! *",
-      "disclaimer": "* 4,6 étoiles sur 5, basées sur 463 avis, statistiques Google",
-      "comments": [
-        {
-          "image": {
-            "src": "assets/images/clients/jeanne.jpg",
-            "alt": "jeanne"
-          },
-          "desc": "Grâce à MAAF automobile j'ai pu changer d'assurance et assurer mes deux véhicules en 10 minutes, l'application est très intuitive !",
-          "name": "Jeanne"
-        },
-        {
-          "image": {
-            "src": "assets/images/clients/cecile.jpg",
-            "alt": "cecile"
-          },
-          "desc": "On était tombé en panne sur l'autoroute et tout ce que j'ai eu à faire c'est de le dire sur l'application, la MAAF s'est ensuite occupé de tout et on a pu voir le dépanneur arriver sur l'application.",
-          "name": "Cecile"
-        },
-        {
-          "image": {
-            "src": "assets/images/clients/romain.jpg",
-            "alt": "romain"
-          },
-          "desc": "Venant d'obtenir mon permis moto je m'en étais acheté une, grâce à MAAF automobile elle a pu être assuré le jour même de sa réception.",
-          "name": "Romain"
-        }
-      ]
+    {
+      "name": "Enzo",
+      "image": "assets/images/assistants/enzo.jpg",
+      "gender": "man"
+    },
+    {
+      "name": "Matthieu",
+      "image": "assets/images/assistants/matthieu.jpg",
+      "gender": "man"
     }
-  }
+  ],
+  "clients": [
+    {
+      "name": "Cécile",
+      "image": "assets/images/clients/cecile.jpg",
+      "gender": "woman"
+    },
+    {
+      "name": "Jeanne",
+      "image": "assets/images/clients/jeanne.jpg",
+      "gender": "woman"
+    },
+    {
+      "name": "Romain",
+      "image": "assets/images/clients/romain.jpg",
+      "gender": "man"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Question",
+      "actions": {
+        "start": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Hey %client%, vous avez été mis en contact avec %assistant%, %gender|assistant|il|elle% est là pour vous aider avec vos questions",
+              "delay": 800
+            },
+            {
+              "txt": "Ravi%gender|assistant||e% %client%. Je peux répondre à n'importe quoi concernant ton assurance, n'hésite pas !",
+              "delay": 3000
+            }
+          ],
+          "next": {
+            "type": "straight",
+            "key": "answer1"
+          }
+        },
+        "answer1": {
+          "type": "sent",
+          "messages": [
+            {
+              "txt": "Bonjour %assistant%, ma question repose sur...",
+              "delay": 500
+            }
+          ],
+          "next": {
+            "type": "straight",
+            "key": "start2"
+          }
+        }
+      }
+    }
+  ]
 }
