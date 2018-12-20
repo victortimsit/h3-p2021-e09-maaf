@@ -4,12 +4,11 @@
       <li
         v-for="(choice, index) in data.choices"
         :key="index"
-        class="title"
         @click="$root.$emit('choice', choice)"
       >
         <Container>{{ choice.label }}</Container>
       </li>
-      <li class="title">
+      <li>
         <Container>
           <form @submit.prevent="$root.$emit('choice', manualChoice)">
             <input v-model="manual" type="text" placeholder="Autre chose...">

@@ -67,7 +67,7 @@ export default {
               }, 50);
             }, 100);
           }
-        }, message.delay / 10);
+        }, message.delay);
       }
     }
   }

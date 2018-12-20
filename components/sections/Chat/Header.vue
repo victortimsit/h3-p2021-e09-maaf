@@ -25,10 +25,10 @@ export default {
 .header
   border-bottom 1px solid lightGrey
 
-.container
-  margin globalMargin
-  text-align center
-  position relative
+  .container
+    margin globalMargin
+    text-align center
+    position relative
 
 .title, .back
   opacity .5
