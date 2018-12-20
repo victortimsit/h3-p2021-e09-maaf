@@ -145,7 +145,7 @@ export default {
 
 .intro
   margin 0 globalMargin
-  padding-bottom globalMargin
+  padding globalMargin 0
   border-bottom 1px solid grey
   color rgba(black, .5)
 
