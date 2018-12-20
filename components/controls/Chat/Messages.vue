@@ -61,7 +61,7 @@ export default {
               this.data.noCallback || this.$root.$emit("next");
             }, 100);
           }
-        }, message.delay / 2);
+        }, message.delay);
       }
     }
   }
