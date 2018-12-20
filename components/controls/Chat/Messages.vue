@@ -1,5 +1,5 @@
 <template>
-  <div
+  <Container
     v-if="data.type === 'received' && data.messages.length || messages.length"
     :class="data.type"
     class="messages"
@@ -11,7 +11,7 @@
       <Message v-for="(message, index) in messages" :key="index" :data="message"/>
       <Writing v-if="writing && data.type === 'received'"/>
     </div>
-  </div>
+  </Container>
 </template>
 
 <script>
@@ -55,15 +55,19 @@ export default {
         const index = i;
         setTimeout(() => {
           this.messages.push(message);
-          this.$root.$emit("scroll");
           setTimeout(() => {
             this.$root.$emit("scroll");
           }, 50);
           if (index + 1 === this.data.messages.length) {
-            this.$root.$emit("next");
             this.writing = false;
+            setTimeout(() => {
+              this.data.noCallback || this.$root.$emit("next");
+              setTimeout(() => {
+                this.$root.$emit("scroll");
+              }, 50);
+            }, 100);
           }
-        }, message.delay);
+        }, message.delay / 10);
       }
     }
   }

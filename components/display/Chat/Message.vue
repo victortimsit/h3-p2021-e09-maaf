@@ -1,5 +1,10 @@
 <template>
-  <div class="message">{{ formatedTxt }}</div>
+  <div class="message">
+    <template v-if="formatedTxt">{{ formatedTxt }}</template>
+    <img v-if="data.img" :src="data.img" :alt="data.img">
+    <SmartLink v-if="data.link" :href="data.link" target="blank">{{ data.link }}</SmartLink>
+    <div v-if="data.html" v-html="data.html"/>
+  </div>
 </template>
 
 <script>
@@ -12,6 +17,7 @@ export default {
   },
   computed: {
     formatedTxt: function() {
+      if (!this.data.txt) return false;
       let txt = this.data.txt;
 
       // Fill client name
@@ -36,6 +42,17 @@ export default {
 };
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
+.messages .message
+  max-width 720px
+  line-height 1.1
 
+  img
+    border-radius globalMargin * 0.5
+    display block
+    max-width 100%
+    max-height 400px
+
+  .smartLink, a
+    text-decoration underline
 </style>

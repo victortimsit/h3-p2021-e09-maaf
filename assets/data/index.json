@@ -35,7 +35,7 @@
   ],
   "scenarios": [
     {
-      "name": "Question",
+      "name": "Chat MAAF 2.0 : Question",
       "actions": {
         "start": {
           "type": "received",
@@ -45,26 +45,341 @@
               "delay": 800
             },
             {
-              "txt": "Ravi%gender|assistant||e% %client%. Je peux répondre à n'importe quoi concernant ton assurance, n'hésite pas !",
+              "txt": "Ravi%gender|assistant||e% de te rencontrer %client%. Je peux répondre à n'importe quoi concernant ton assurance",
               "delay": 3000
+            },
+            {
+              "txt": "Sur quel sujet porte ta question?",
+              "delay": 4000
             }
           ],
-          "next": {
-            "type": "straight",
-            "key": "answer1"
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Assurance auto",
+                "key": "auto"
+              },
+              {
+                "label": "Un de mes sinitres",
+                "key": "claim"
+              }
+            ],
+            "default": "auto"
           }
         },
-        "answer1": {
-          "type": "sent",
+        "question": {
+          "type": "received",
           "messages": [
             {
-              "txt": "Bonjour %assistant%, ma question repose sur...",
-              "delay": 500
+              "txt": "A quel propos pour cette nouvelle question?",
+              "delay": 1000
             }
           ],
-          "next": {
-            "type": "straight",
-            "key": "start2"
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Mon assurance automobile",
+                "key": "auto"
+              },
+              {
+                "label": "Un de mes sinitres",
+                "key": "claim"
+              }
+            ],
+            "default": "auto"
+          }
+        },
+        "auto": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Une question sur l'assurance auto, ok !",
+              "delay": 1500
+            },
+            {
+              "txt": "Ha ! J'ai vu que tu as plusieurs véhicules assurés chez nous",
+              "delay": 2700
+            },
+            {
+              "txt": "C'est par rapport auquel ?",
+              "delay": 3500
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Peugeot 308",
+                "key": "auto--peugeot"
+              },
+              {
+                "label": "BMW K 1300 GT",
+                "key": "auto--bmw"
+              }
+            ],
+            "default": "auto--peugeot"
+          }
+        },
+        "auto--peugeot": {
+          "type": "received",
+          "messages": [
+            {
+              "html": "Ta Peugeot est assurée <strong>Tous risques CLASSIQUE</strong> chez nous depuis 2012",
+              "delay": 1500
+            },
+            {
+              "txt": "Comme tu le sais il est actuellement en réparation suite à ton sinistre du du 11 décembre dernier",
+              "delay": 2700
+            },
+            {
+              "txt": "Tu as besoin de plus d'informations ?",
+              "delay": 3500
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Etat des réparations",
+                "key": "claim--repair"
+              },
+              {
+                "label": "Une autre question",
+                "key": "question"
+              },
+              {
+                "label": "C'est tout merci",
+                "key": "end"
+              }
+            ],
+            "default": "question"
+          }
+        },
+        "auto--bmw": {
+          "type": "received",
+          "messages": [
+            {
+              "html": "Ta BMW est assurée au <strong>Tiers CLASSIQUE</strong> chez nous septembre",
+              "delay": 1500
+            },
+            {
+              "txt": "Du coup en cas d'accident seuls les dégats causés à autrui seront couvert, les réparations de ta moto seront à tes frais",
+              "delay": 2700
+            },
+            {
+              "txt": "Tu as besoin de plus d'informations ?",
+              "delay": 3500
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Une autre question",
+                "key": "question"
+              },
+              {
+                "label": "C'est tout merci",
+                "key": "end"
+              }
+            ],
+            "default": "question"
+          }
+        },
+        "claim": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Une question sur tes sinistres, d'accord",
+              "delay": 1200
+            },
+            {
+              "txt": "Il s'agit duquel ?",
+              "delay": 2200
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Du plus récent (collision 11/12)",
+                "key": "claim--info"
+              }
+            ],
+            "default": "claim--info"
+          }
+        },
+        "claim--info": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Il s'agissait d'une collision entre ta Peugeot 308 et un scooter d'un autre usager près de Croix de Chavaux à Montreuil",
+              "delay": 1200
+            },
+            {
+              "txt": "Que veux-tu savoir à propos de ce dernier ?",
+              "delay": 2400
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Etat des réparations",
+                "key": "claim--repair"
+              },
+              {
+                "label": "Ma couverture",
+                "key": "claim--payout"
+              }
+            ],
+            "default": "claim--repair"
+          }
+        },
+        "claim--repair": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ton véhicule ne pouvait plus rouler sur la voie publique car un de tes rétroviseurs avait été arraché",
+              "delay": 1700
+            },
+            {
+              "txt": "Le garage vient de recevoir la pièce et ils l'installent aujourd'hui normalement, super !",
+              "delay": 3400
+            },
+            {
+              "txt": "Si tout se passe bien tu devrais pouvoir le récupérer en fin de semaine",
+              "delay": 5000
+            },
+            {
+              "txt": "Il te faut autre chose ?",
+              "delay": 6000
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Informations du garage",
+                "key": "claim--garage"
+              },
+              {
+                "label": "A propos de ma couverture",
+                "key": "claim--payout"
+              },
+              {
+                "label": "Une autre question",
+                "key": "question"
+              },
+              {
+                "label": "C'est tout bon merci !",
+                "key": "end"
+              }
+            ],
+            "default": "claim--garage"
+          }
+        },
+        "claim--garage": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ta voiture est au \"Garage Auto #1\" au 72 Rue Robespierre à Montreuil",
+              "delay": 1700
+            },
+            {
+              "img": "assets/images/garageAuto1.jpg",
+              "delay": 3000
+            },
+            {
+              "link": "https://goo.gl/LfhnAe",
+              "delay": 4000
+            },
+            {
+              "html": "Tu peux aussi les contacter en cas de besoin au <a href=\"tel:0142879993\">01.42.87.99.93</a>",
+              "delay": 5000
+            },
+            {
+              "txt": "Est-ce que je peux encore autre chose ?",
+              "delay": 6800
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Une autre question",
+                "key": "question"
+              },
+              {
+                "label": "C'est tout nickel merci !",
+                "key": "end"
+              }
+            ],
+            "default": "question"
+          }
+        },
+        "claim--payout": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Tu étais en tort sur cet incident mais étant donné que tu as souscrit une garantie dommages tous accidents tu seras quand même remboursé, ne t'inquiète pas",
+              "delay": 1700
+            },
+            {
+              "txt": "On doit juste attendre que le garagiste finisse de réparer ta voiture pour pouvoir te rembourser du coup",
+              "delay": 3000
+            },
+            {
+              "txt": "Est-ce que je peux encore autre chose ?",
+              "delay": 4200
+            }
+          ],
+          "userInput": {
+            "type": "choice",
+            "choices": [
+              {
+                "label": "Etat des réparations",
+                "key": "claim--repair"
+              },
+              {
+                "label": "Une autre question",
+                "key": "question"
+              },
+              {
+                "label": "C'est tout nickel merci !",
+                "key": "end"
+              }
+            ],
+            "default": "question"
+          }
+        },
+        "end": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Super !",
+              "delay": 1000
+            },
+            {
+              "txt": "Content%gender|assistant||e% d'avoir pu t'aider %client%, si tu as d'autres question n'hésite pas à refaire appel à nous",
+              "delay": 2700
+            },
+            {
+              "txt": "Bonne fin de journée à toi !",
+              "delay": 4000
+            }
+          ],
+          "userInput": {
+            "type": "feedback",
+            "scale": [
+              "Je ferais mieux la prochaine fois !",
+              "Merci",
+              "Merci !",
+              "Merci à toi !",
+              "Merci beaucoup !"
+            ]
           }
         }
       }

@@ -5,7 +5,7 @@
         <img src="~/assets/icons/arrowBack.svg" alt="arrowBack">
       </div>
       <div class="mainTxt title">{{ title }}</div>
-      <div class="mainTxt cancel softHover">Cancel</div>
+      <div class="mainTxt cancel softHover">Annuler</div>
     </Container>
   </header>
 </template>
