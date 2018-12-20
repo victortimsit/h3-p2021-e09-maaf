@@ -4,13 +4,14 @@
       <li
         v-for="(choice, index) in data.choices"
         :key="index"
-        @click="$root.$emit('choice', choice)"
+        :class="choice.class"
+        @click="$root.$emit('answer', choice)"
       >
         <Container>{{ choice.label }}</Container>
       </li>
       <li>
         <Container>
-          <form @submit.prevent="manual && $root.$emit('choice', manualChoice)">
+          <form @submit.prevent="manual && $root.$emit('answer', manualChoice)">
             <input v-model="manual" type="text" placeholder="Autre chose...">
             <input class="softHover uppercase" type="submit" value="Envoyer">
           </form>
@@ -49,6 +50,10 @@ li
   padding globalMargin 0
   border-top 1px solid grey
   cursor pointer
+
+.disabled
+  pointer-events none
+  opacity .5
 
 form
   position relative

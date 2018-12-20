@@ -4,12 +4,17 @@
     :class="data.type"
     class="messages"
   >
-    <div class="pp">
-      <img :src="author.image" :alt="author.name">
+    <div v-if="data.header" class="header">
+      <img :src="data.header" alt="header">
     </div>
-    <div class="list">
-      <Message v-for="(message, index) in messages" :key="index" :data="message"/>
-      <Writing v-if="writing && data.type === 'received'"/>
+    <div class="wrapper">
+      <div class="pp">
+        <img :src="author.image" :alt="author.name">
+      </div>
+      <div class="list">
+        <Message v-for="(message, index) in messages" :key="index" :data="message"/>
+        <Writing v-if="writing && data.type === 'received'"/>
+      </div>
     </div>
   </Container>
 </template>
@@ -69,7 +74,16 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.messages
+.header
+  text-align center
+  
+  img
+    width 160px
+    max-height 100px
+    max-width 100%
+    margin-top globalMargin
+
+.wrapper
   display flex
   align-items flex-end
   margin-top globalMargin
@@ -85,7 +99,8 @@ export default {
       margin-bottom 2px
 
 .sent
-  flex-flow row-reverse nowrap
+  .wrapper
+    flex-flow row-reverse nowrap
 
   .list
     margin-right globalMargin * 0.5
@@ -107,7 +122,6 @@ export default {
       border-radius 18px
 
 .received
-
   .list
     margin-left globalMargin * 0.5
     padding-right globalMargin

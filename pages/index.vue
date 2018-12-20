@@ -15,7 +15,7 @@ export default {
     ChatArea
   },
   head: {
-    title: "Chat MAAF 2.0"
+    title: "Chat MAAF"
   },
   created() {
     this.$store.commit("init");

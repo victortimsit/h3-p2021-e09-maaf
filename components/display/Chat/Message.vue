@@ -37,7 +37,7 @@ export default {
     border-radius globalMargin * 0.5
     display block
     max-width 100%
-    max-height 400px
+    max-height 300px
 
   .smartLink, a
     text-decoration underline

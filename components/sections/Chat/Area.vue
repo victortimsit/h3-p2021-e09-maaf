@@ -9,6 +9,7 @@
     <div :class="{disabled: !userInput, enabled: userInput}" class="chatInput">
       <Choices v-if="userInput.type === 'choice'" :data="userInput"/>
       <Feedback v-else-if="userInput.type === 'feedback'" :data="userInput"/>
+      <Binary v-else-if="userInput.type === 'binary'" :data="userInput"/>
     </div>
   </div>
 </template>
@@ -21,12 +22,14 @@ import formatTxt from "~/assets/js/helpers/formatTxt";
 import Messages from "~/components/controls/Chat/Messages.vue";
 import Choices from "~/components/controls/Chat/Choices.vue";
 import Feedback from "~/components/controls/Chat/Feedback.vue";
+import Binary from "~/components/controls/Chat/Binary.vue";
 
 export default {
   components: {
     Messages,
     Choices,
-    Feedback
+    Feedback,
+    Binary
   },
   data() {
     return {
@@ -42,7 +45,7 @@ export default {
   },
   created() {
     this.$root.$on("next", this.next.bind(this));
-    this.$root.$on("choice", this.choice.bind(this));
+    this.$root.$on("answer", this.answer.bind(this));
     this.$root.$on("feedback", this.feedback.bind(this));
   },
   mounted() {
@@ -71,9 +74,9 @@ export default {
       }
       setTimeout(this.scroll.bind(this), 100);
     },
-    choice: function(choice) {
-      this.sendMsg(choice.label);
-      this.post(choice.key);
+    answer: function(answer) {
+      this.sendMsg(answer.label);
+      this.post(answer.key);
     },
     feedback: function(feedback) {
       this.userInput = false;
@@ -145,7 +148,7 @@ export default {
 
 .intro
   margin 0 globalMargin
-  padding globalMargin 0
+  padding globalMargin
   border-bottom 1px solid grey
   color rgba(black, .5)
 
