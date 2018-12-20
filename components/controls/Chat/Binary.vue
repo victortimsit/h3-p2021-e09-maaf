@@ -1,19 +1,15 @@
 <template>
-  <div class="binary">
+  <div class="binary centered">
     <div
       :class="data.positive.class"
       class="option positive softHover"
       @click="$root.$emit('answer', data.positive)"
-    >
-      <Container class="centered">{{ data.positive.label }}</Container>
-    </div>
+    >{{ data.positive.label }}</div>
     <div
       :class="data.negative.class"
       class="option negative softHover"
       @click="$root.$emit('answer', data.negative)"
-    >
-      <Container class="centered">{{ data.negative.label }}</Container>
-    </div>
+    >{{ data.negative.label }}</div>
   </div>
 </template>
 

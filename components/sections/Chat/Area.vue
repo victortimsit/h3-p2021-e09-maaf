@@ -7,9 +7,10 @@
       </div>
     </div>
     <div :class="{disabled: !userInput, enabled: userInput}" class="chatInput">
-      <Choices v-if="userInput.type === 'choice'" :data="userInput"/>
+      <Choices v-if="userInput.type === 'choices'" :data="userInput"/>
       <Feedback v-else-if="userInput.type === 'feedback'" :data="userInput"/>
       <Binary v-else-if="userInput.type === 'binary'" :data="userInput"/>
+      <VideoReport v-else-if="userInput.type === 'videoReport'" :data="userInput"/>
     </div>
   </div>
 </template>
@@ -23,13 +24,15 @@ import Messages from "~/components/controls/Chat/Messages.vue";
 import Choices from "~/components/controls/Chat/Choices.vue";
 import Feedback from "~/components/controls/Chat/Feedback.vue";
 import Binary from "~/components/controls/Chat/Binary.vue";
+import VideoReport from "~/components/controls/Chat/VideoReport.vue";
 
 export default {
   components: {
     Messages,
     Choices,
     Feedback,
-    Binary
+    Binary,
+    VideoReport
   },
   data() {
     return {
@@ -47,11 +50,13 @@ export default {
     this.$root.$on("next", this.next.bind(this));
     this.$root.$on("answer", this.answer.bind(this));
     this.$root.$on("feedback", this.feedback.bind(this));
+    this.$root.$on("videoReport", this.videoReport.bind(this));
   },
   mounted() {
     elementResizeEvent(this.$refs.scrollContainer, this.scroll.bind(this));
     elementResizeEvent(this.$refs.chatContainer, this.scroll.bind(this));
     this.post("start");
+    // this.post("carCrash__claim");
   },
   methods: {
     scroll: function() {
@@ -91,6 +96,20 @@ export default {
       setTimeout(() => {
         this.sendMsg(feedback.answer, 2000, "received");
       }, 1000);
+    },
+    videoReport: function(answer) {
+      this.postedMessagesGroup.push({
+        type: "sent",
+        messages: [
+          {
+            img: answer.img,
+            imgLabel: answer.imgLabel,
+            delay: 0
+          }
+        ],
+        noCallback: true
+      });
+      setTimeout(this.post.bind(this, answer.key), 2000);
     },
     sendMsg: function(msg, delay = 0, type = "sent") {
       if (
@@ -134,8 +153,12 @@ export default {
   flex-flow column nowrap
   overflow hidden
   background white
-  padding-bottom 18px
+  position relative;
   -ms-overflow-style: none;
+
+  @media screen and (min-width: desktop)
+    padding-bottom 18px // iPhone X safezone
+
   &::-webkit-scrollbar
     display none
 
@@ -154,7 +177,6 @@ export default {
 
 .chatInput
   transition transform .3s ease
-  will-change transform
 
   &.disabled
     transform translateY(100%)

@@ -47,10 +47,10 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
-                "label": "Je vis sinistre",
+                "label": "Je vis un sinistre",
                 "key": "issue"
               },
               {
@@ -101,7 +101,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Accident de voiture",
@@ -248,7 +248,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Plutôt calme",
@@ -275,7 +275,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Plutôt calme",
@@ -329,7 +329,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "C'est parti",
@@ -353,31 +353,68 @@
             {
               "txt": "Tu pourras voir où en est le dépanneur sur la carte de l'application",
               "delay": 2300
-            },
-            {
-              "txt": "Maintenant pour le constat je vais avoir besoin que tu me filmes la scène tout en commentant le plus précisement ce qu'il c'est passé",
-              "delay": 4000
-            },
-            {
-              "txt": "Tu peux le faire avec l'autre conducteur si tu veux",
-              "delay": 4700
             }
           ],
           "userInput": {
             "type": "straight",
-            "key": ""
+            "key": "carCrash__claim"
           }
         },
         "carCrash__claim": {
           "type": "received",
+          "header": "assets/images/undraw/report.svg",
           "messages": [
             {
-              "txt": "Alors pour le constat je vais avoir besoin que tu me filmes la scène tout en commentant le plus précisement ce qu'il c'est passé",
+              "txt": "Alors pour le constat je vais avoir besoin que tu me filmes la scène tout en commentant le plus précisement ce qui c'est passé",
               "delay": 1900
             },
             {
               "txt": "Tu peux le faire avec l'autre conducteur si tu veux",
+              "delay": 2800
+            }
+          ],
+          "userInput": {
+            "type": "videoReport",
+            "negative": {
+              "label": "Je ne veux pas filmer",
+              "key": "carCrash__claim--n"
+            },
+            "key": "carCrash__claim--y"
+          }
+        },
+        "carCrash__claim--n": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Dommage, je ne peux pas t'aider plus pour l'instant alors",
+              "delay": 1000
+            },
+            {
+              "txt": "N'hésite pas à nous recontacter si jamais tu as des questions qui te viennent à l'esprit ou besoin d'assistance",
+              "delay": 2200
+            },
+            {
+              "txt": "Bon courage à toi %client% !",
               "delay": 3000
+            }
+          ],
+          "userInput": {
+            "type": "feedback",
+            "scale": [
+              "Je ferais mieux la prochaine fois !",
+              "Merci",
+              "Merci !",
+              "Merci à toi !",
+              "Merci beaucoup !"
+            ]
+          }
+        },
+        "carCrash__claim--y": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Génial !",
+              "delay": 1000
             }
           ],
           "userInput": {
@@ -399,7 +436,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Assurance auto",
@@ -423,7 +460,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Mon assurance automobile",
@@ -455,7 +492,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Peugeot 308",
@@ -486,7 +523,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Etat des réparations",
@@ -521,7 +558,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Une autre question",
@@ -548,7 +585,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Du plus récent (accident 11/12)",
@@ -571,7 +608,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Etat des réparations",
@@ -606,7 +643,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Informations du garage",
@@ -653,7 +690,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Une autre question",
@@ -684,7 +721,7 @@
             }
           ],
           "userInput": {
-            "type": "choice",
+            "type": "choices",
             "choices": [
               {
                 "label": "Etat des réparations",
