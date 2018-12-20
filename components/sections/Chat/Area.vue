@@ -43,6 +43,7 @@ export default {
     this.$root.$on("feedback", this.feedback.bind(this));
   },
   mounted() {
+    elementResizeEvent(this.$refs.scrollContainer, this.scroll.bind(this));
     elementResizeEvent(this.$refs.chatContainer, this.scroll.bind(this));
     this.post("start");
   },
