@@ -1,13 +1,15 @@
 <template>
   <div class="message">
-    <template v-if="formatedTxt">{{ formatedTxt }}</template>
+    <template v-if="data.txt">{{ formated(data.txt) }}</template>
+    <div v-if="data.html" v-html="formated(data.txt)"/>
     <img v-if="data.img" :src="data.img" :alt="data.img">
     <SmartLink v-if="data.link" :href="data.link" target="blank">{{ data.link }}</SmartLink>
-    <div v-if="data.html" v-html="data.html"/>
   </div>
 </template>
 
 <script>
+import formatTxt from "~/assets/js/helpers/formatTxt";
+
 export default {
   props: {
     data: {
@@ -15,27 +17,12 @@ export default {
       default: () => ({})
     }
   },
-  computed: {
-    formatedTxt: function() {
-      if (!this.data.txt) return false;
-      let txt = this.data.txt;
-
-      // Fill client name
-      txt = txt.replace(/%client%/g, this.$store.state.client.name);
-
-      // Fill assistant name
-      txt = txt.replace(/%assistant%/g, this.$store.state.assistant.name);
-
-      // Deal with gender exceptions
-      let genderRegex = /%gender\|(assistant|client)\|([a-zA-Z]*)\|([a-zA-Z]*)%/g;
-      let match;
-      while ((match = genderRegex.exec(txt)) !== null) {
-        txt = txt.replace(
-          match[0],
-          this.$store.state[match[1]].gender === "man" ? match[2] : match[3]
-        );
-      }
-      return txt;
+  methods: {
+    formated(msg) {
+      return formatTxt(msg, {
+        client: this.$store.state.client,
+        assistant: this.$store.state.assistant
+      });
     }
   }
 };

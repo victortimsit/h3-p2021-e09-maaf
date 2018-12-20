@@ -2,6 +2,7 @@
   <div class="chatArea">
     <div ref="scrollContainer" class="chatTxt">
       <div ref="chatContainer" class="chatContainer">
+        <div class="intro centered">{{ formated($store.state.scenario.intro) }}</div>
         <Messages v-for="(messages, index) in postedMessagesGroup" :key="index" :data="messages"/>
       </div>
     </div>
@@ -14,6 +15,8 @@
 
 <script>
 import elementResizeEvent from "element-resize-event";
+
+import formatTxt from "~/assets/js/helpers/formatTxt";
 
 import Messages from "~/components/controls/Chat/Messages.vue";
 import Choices from "~/components/controls/Chat/Choices.vue";
@@ -109,6 +112,12 @@ export default {
           noCallback: true
         });
       }
+    },
+    formated(msg) {
+      return formatTxt(msg, {
+        client: this.$store.state.client,
+        assistant: this.$store.state.assistant
+      });
     }
   }
 };
@@ -121,6 +130,8 @@ export default {
   justify-content flex-end
   flex-flow column nowrap
   overflow hidden
+  background white
+  padding-bottom 18px
   -ms-overflow-style: none;
   &::-webkit-scrollbar
     display none
@@ -131,6 +142,12 @@ export default {
   -ms-overflow-style: none;
   &::-webkit-scrollbar
     display none
+
+.intro
+  margin 0 globalMargin
+  padding-bottom globalMargin
+  border-bottom 1px solid grey
+  color rgba(black, .5)
 
 .chatInput
   transition transform .3s ease

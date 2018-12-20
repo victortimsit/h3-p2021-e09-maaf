@@ -5,7 +5,7 @@
         <img src="~/assets/icons/arrowBack.svg" alt="arrowBack">
       </div>
       <div class="mainTxt title">{{ title }}</div>
-      <div class="mainTxt cancel softHover">Annuler</div>
+      <div class="mainTxt cta softHover">Appeler</div>
     </Container>
   </header>
 </template>
@@ -23,17 +23,15 @@ export default {
 
 <style scoped lang="stylus">
 .header
-  border-bottom 1px solid lightGrey
+  background blue
+  color white
 
   .container
     margin globalMargin
     text-align center
     position relative
 
-.title, .back
-  opacity .5
-
-.back, .cancel
+.back, .cta
   position absolute
   top 50%
   transform translateY(-50%)
@@ -44,9 +42,7 @@ export default {
   height 26px
   width 26px
 
-
-.cancel
+.cta
   right 0
-  color red
 
 </style>

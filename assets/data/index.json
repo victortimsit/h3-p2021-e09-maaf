@@ -36,14 +36,11 @@
   "scenarios": [
     {
       "name": "Chat MAAF 2.0",
+      "intro": "Hey %client%, vous avez été mis en contact avec %assistant%, %gender|assistant|il|elle% est là pour vous aider !",
       "actions": {
         "start": {
           "type": "received",
           "messages": [
-            {
-              "txt": "Hey %client%, vous avez été mis en contact avec %assistant%, %gender|assistant|il|elle% est là pour vous aider avec vos questions",
-              "delay": 800
-            },
             {
               "txt": "Ravi%gender|assistant||e% de te rencontrer %client%. Je peux répondre à n'importe quoi concernant ton assurance",
               "delay": 3000

@@ -119,4 +119,5 @@ input[type=submit]
   text-align center
   padding globalMargin 0
   border-top 1px solid grey
+  background white
 </style>

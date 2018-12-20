@@ -25,10 +25,9 @@ export default {
 
 <style scoped lang="stylus">
 .chat
-  background white
+  background blue
   width 100%
   height 100vh
-  padding-bottom 18px
   display flex
   flex-flow column nowrap
   justify-content space-between
