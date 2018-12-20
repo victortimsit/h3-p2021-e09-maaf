@@ -35,7 +35,7 @@
   ],
   "scenarios": [
     {
-      "name": "Chat MAAF 2.0 : Question",
+      "name": "Chat MAAF 2.0",
       "actions": {
         "start": {
           "type": "received",
@@ -161,7 +161,7 @@
           "type": "received",
           "messages": [
             {
-              "html": "Ta BMW est assurée au <strong>Tiers CLASSIQUE</strong> chez nous septembre",
+              "html": "Ta BMW est assurée au <strong>Tiers CLASSIQUE</strong> chez nous depuis septembre",
               "delay": 1500
             },
             {

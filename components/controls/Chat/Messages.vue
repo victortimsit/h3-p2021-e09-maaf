@@ -55,19 +55,13 @@ export default {
         const index = i;
         setTimeout(() => {
           this.messages.push(message);
-          setTimeout(() => {
-            this.$root.$emit("scroll");
-          }, 50);
           if (index + 1 === this.data.messages.length) {
             this.writing = false;
             setTimeout(() => {
               this.data.noCallback || this.$root.$emit("next");
-              setTimeout(() => {
-                this.$root.$emit("scroll");
-              }, 50);
             }, 100);
           }
-        }, message.delay);
+        }, message.delay / 2);
       }
     }
   }

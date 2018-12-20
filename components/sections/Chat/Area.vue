@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import elementResizeEvent from "element-resize-event";
+
 import Messages from "~/components/controls/Chat/Messages.vue";
 import Choices from "~/components/controls/Chat/Choices.vue";
 import Feedback from "~/components/controls/Chat/Feedback.vue";
@@ -36,13 +38,12 @@ export default {
     }
   },
   created() {
-    this.$root.$on("scroll", this.scroll.bind(this));
     this.$root.$on("next", this.next.bind(this));
     this.$root.$on("choice", this.choice.bind(this));
     this.$root.$on("feedback", this.feedback.bind(this));
   },
   mounted() {
-    this.scroll();
+    elementResizeEvent(this.$refs.chatContainer, this.scroll.bind(this));
     this.post("start");
   },
   methods: {
@@ -64,6 +65,7 @@ export default {
       } else {
         this.userInput = this.current.userInput;
       }
+      setTimeout(this.scroll.bind(this), 100);
     },
     choice: function(choice) {
       this.sendMsg(choice.label);
@@ -84,16 +86,28 @@ export default {
       }, 1000);
     },
     sendMsg: function(msg, delay = 0, type = "sent") {
-      this.postedMessagesGroup.push({
-        type,
-        messages: [
-          {
-            txt: msg,
-            delay: delay
-          }
-        ],
-        noCallback: true
-      });
+      if (
+        this.postedMessagesGroup[this.postedMessagesGroup.length - 1].type ===
+        type
+      ) {
+        this.postedMessagesGroup[
+          this.postedMessagesGroup.length - 1
+        ].messages.push({
+          txt: msg,
+          delay
+        });
+      } else {
+        this.postedMessagesGroup.push({
+          type,
+          messages: [
+            {
+              txt: msg,
+              delay
+            }
+          ],
+          noCallback: true
+        });
+      }
     }
   }
 };
@@ -111,13 +125,13 @@ export default {
     display none
 
 .chatTxt
+  padding-bottom globalMargin
   overflow-y scroll
   -ms-overflow-style: none;
   &::-webkit-scrollbar
     display none
 
 .chatInput
-  margin-top globalMargin
   transition transform .3s ease
   will-change transform
 

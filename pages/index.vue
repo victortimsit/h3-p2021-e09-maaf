@@ -25,7 +25,7 @@ export default {
   background white
   width 100%
   height 100vh
-  padding-bottom 34px
+  padding-bottom 18px
   display flex
   flex-flow column nowrap
   justify-content space-between

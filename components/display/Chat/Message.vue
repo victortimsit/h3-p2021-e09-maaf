@@ -30,7 +30,6 @@ export default {
       let genderRegex = /%gender\|(assistant|client)\|([a-zA-Z]*)\|([a-zA-Z]*)%/g;
       let match;
       while ((match = genderRegex.exec(txt)) !== null) {
-        console.log();
         txt = txt.replace(
           match[0],
           this.$store.state[match[1]].gender === "man" ? match[2] : match[3]
