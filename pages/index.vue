@@ -16,6 +16,9 @@ export default {
   },
   head: {
     title: "Chat MAAF 2.0"
+  },
+  created() {
+    this.$store.commit("init");
   }
 };
 </script>

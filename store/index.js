@@ -17,7 +17,16 @@ const store = () => {
       client: trueData.client,
       scenario: trueData.scenario
     },
-    mutations: {}
+    mutations: {
+      init(state) {
+        state.assistant =
+          data.assistants[Math.floor(Math.random() * data.assistants.length)];
+        state.client =
+          data.clients[Math.floor(Math.random() * data.clients.length)];
+        state.scenario =
+          data.scenarios[Math.floor(Math.random() * data.scenarios.length)];
+      }
+    }
   });
 };
 
