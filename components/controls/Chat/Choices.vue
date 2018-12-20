@@ -10,7 +10,7 @@
       </li>
       <li>
         <Container>
-          <form @submit.prevent="$root.$emit('choice', manualChoice)">
+          <form @submit.prevent="manual && $root.$emit('choice', manualChoice)">
             <input v-model="manual" type="text" placeholder="Autre chose...">
             <input class="softHover uppercase" type="submit" value="Envoyer">
           </form>
@@ -52,6 +52,9 @@ li
 
 form
   position relative
+
+input[type=text]
+  width 80%
 
 input[type=submit]
   color blue
