@@ -94,7 +94,7 @@ export default {
 
   .message
     color white
-    background darkGrey
+    background blue
     border-radius 18px 4px 4px 18px
 
     &:first-child
