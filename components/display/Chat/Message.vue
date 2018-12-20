@@ -1,7 +1,7 @@
 <template>
   <div class="message">
     <template v-if="data.txt">{{ formated(data.txt) }}</template>
-    <div v-if="data.html" v-html="formated(data.txt)"/>
+    <div v-if="data.html" v-html="formated(data.html)"/>
     <img v-if="data.img" :src="data.img" :alt="data.img">
     <SmartLink v-if="data.link" :href="data.link" target="blank">{{ data.link }}</SmartLink>
   </div>
