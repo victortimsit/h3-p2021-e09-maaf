@@ -43,7 +43,7 @@
           "messages": [
             {
               "txt": "Ravi%gender|assistant||e% de te rencontrer %client%. Que puis-je pour toi ?",
-              "delay": 3000
+              "delay": 2000
             }
           ],
           "userInput": {
@@ -415,11 +415,135 @@
             {
               "txt": "Génial !",
               "delay": 1000
+            },
+            {
+              "txt": "Ok normalement j'ai toutes les informations qu'il me faut pour te rédiger le constat, laisse moi deux minutes et ce sera bon !",
+              "delay": 4000
+            },
+            {
+              "txt": "Chaud devant !",
+              "delay": 8000
+            },
+            {
+              "img": "assets/images/constat.jpg",
+              "delay": 8300
             }
           ],
           "userInput": {
             "type": "straight",
-            "key": ""
+            "key": "carCrash__claim--confirm"
+          }
+        },
+        "carCrash__claim--confirm": {
+          "type": "received",
+          "header": "assets/images/undraw/contract.svg",
+          "messages": [
+            {
+              "txt": "Si jamais il faut y apporter des modifications c'est tout a fait encore possible aussi !",
+              "delay": 1500
+            },
+            {
+              "txt": "Mais s'il est correct il te suffit de le signer",
+              "delay": 2700
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Signer",
+                "key": "carCrash__claim--sign"
+              },
+              {
+                "label": "Modifier",
+                "key": "carCrash__claim--edit"
+              }
+            ],
+            "default": "carCrash__claim--edit"
+          }
+        },
+        "carCrash__claim--edit": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Mince, dis-moi ce qu'il faut modifier",
+              "delay": 1200
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [],
+            "default": "carCrash__claim--reconfirm"
+          }
+        },
+        "carCrash__claim--reconfirm": {
+          "type": "received",
+          "messages": [
+            {
+              "img": "assets/images/constat.jpg",
+              "delay": 3000
+            },
+            {
+              "txt": "Et voila",
+              "delay": 3300
+            },
+            {
+              "txt": "Je peux le modifier à nouveau si nécessaire, sinon il te suffit de signer",
+              "delay": 4500
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Signer",
+                "key": "carCrash__claim--sign"
+              },
+              {
+                "label": "Modifier",
+                "key": "carCrash__claim--edit"
+              }
+            ],
+            "default": "carCrash__claim--edit"
+          }
+        },
+        "carCrash__claim--sign": {
+          "type": "received",
+          "messages": [],
+          "userInput": {
+            "type": "sign",
+            "key": "carCrash__claim--signed"
+          }
+        },
+        "carCrash__claim--signed": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Magnifique !",
+              "delay": 800
+            },
+            {
+              "txt": "Tout est bon vis-à-vis de ton assurance du coup, tu n'as plus à t'en faire de ce côté",
+              "delay": 2200
+            },
+            {
+              "html": "Tu pourras retrouver tout les détails liés à ce sinistre dans la partie <strong>Mes Sinistres</strong> de l'application",
+              "delay": 4000
+            },
+            {
+              "txt": "Si tu as d'autres questions n'hésite pas à nous recontacter, bonne fin de soirée",
+              "delay": 5000
+            }
+          ],
+          "userInput": {
+            "type": "feedback",
+            "scale": [
+              "Je ferais mieux la prochaine fois !",
+              "Merci",
+              "Merci !",
+              "Merci à toi !",
+              "Merci beaucoup !"
+            ]
           }
         },
         "question": {

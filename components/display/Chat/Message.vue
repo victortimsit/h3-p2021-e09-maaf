@@ -2,8 +2,14 @@
   <div class="message">
     <template v-if="data.txt">{{ formated(data.txt) }}</template>
     <div v-if="data.html" v-html="formated(data.html)"/>
-    <img v-if="data.img" :src="data.img" :alt="data.img">
+    <img :src="data.img" :alt="data.img" @click="fullView = true">
     <div v-if="data.imgLabel" class="imgLabel">{{ data.imgLabel }}</div>
+    <div v-if="data.img" :class="{active: fullView}" class="fullView" @click="fullView = false">
+      <div class="wrapper">
+        <img :src="data.img" :alt="data.img">
+        <div v-if="data.imgLabel" class="imgLabel">{{ data.imgLabel }}</div>
+      </div>
+    </div>
     <SmartLink v-if="data.link" :href="data.link" target="blank">{{ data.link }}</SmartLink>
   </div>
 </template>
@@ -17,6 +23,11 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+  data() {
+    return {
+      fullView: false
+    };
   },
   methods: {
     formated(msg) {
@@ -49,6 +60,31 @@ export default {
     position absolute
     top globalMargin
     right globalMargin
+
+  .fullView
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index 20
+    background rgba(black, .8)
+    opacity 0
+    pointer-events none
+    transition opacity .3s ease
+    will-change opacity
+    display flex
+    align-items center
+
+    &.active
+      pointer-events auto
+      opacity 1
+
+    .wrapper
+      position relative
+
+    img
+      max-height 100%
 
   .smartLink, a
     text-decoration underline

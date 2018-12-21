@@ -55,6 +55,8 @@ export default {
   },
   methods: {
     postMessages: function() {
+      if (this.data.messages.length === 0) return this.$root.$emit("next");
+
       for (let i = 0; i < this.data.messages.length; i++) {
         const message = this.data.messages[i];
         const index = i;

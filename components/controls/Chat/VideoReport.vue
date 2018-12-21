@@ -46,22 +46,20 @@ export default {
           }
           if (!this.devices.length) {
             // No camera found
-            this.data.negative.label =
-              "Mon téléphone n'a pas de caméra (aucune n'a été trouvée)";
-            this.$root.$emit("answer", this.data.negative);
+            this.error(
+              "Mon téléphone n'a pas de caméra (aucune n'a été trouvée)"
+            );
           }
         })
         .catch(e => {
           // No camera found
-          this.data.negative.label =
-            "Mon téléphone n'a pas de caméra (aucune n'a été trouvée)";
-          this.$root.$emit("answer", this.data.negative);
+          this.error(
+            "Mon téléphone n'a pas de caméra (aucune n'a été trouvée)"
+          );
         });
     } else {
       // Browser failure
-      this.data.negative.label =
-        "Mon téléphone ne supporte pas la fonction filmer";
-      this.$root.$emit("answer", this.data.negative);
+      this.error("Mon téléphone ne supporte pas la fonction filmer");
     }
   },
   methods: {
@@ -87,11 +85,10 @@ export default {
           this.recording = true;
         })
         .catch(e => {
-          console.error(e);
           // User failure
-          this.data.negative.label =
-            "Je ne veux pas donner les permissions nécessaires à l'application pour filmer";
-          this.$root.$emit("answer", this.data.negative);
+          this.error(
+            "Je ne veux pas donner les permissions nécessaires à l'application pour filmer"
+          );
         });
     },
     stop: function() {
@@ -101,7 +98,7 @@ export default {
       canvas.height = this.$refs.capture.videoHeight;
       canvas.getContext("2d").drawImage(this.$refs.capture, 0, 0);
 
-      this.$root.$emit("videoReport", {
+      this.$root.$emit("imgAnswer", {
         img: canvas.toDataURL("image/png"),
         imgLabel: new Date(Date.now() - this.startTime - 3600000)
           .toTimeString()
@@ -118,6 +115,12 @@ export default {
         window.stream.getTracks().forEach(function(track) {
           track.stop();
         });
+    },
+    error: function(msg) {
+      this.$root.$emit("answer", {
+        label: msg,
+        key: this.data.key
+      });
     }
   }
 };

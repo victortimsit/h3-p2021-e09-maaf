@@ -11,6 +11,7 @@
       <Feedback v-else-if="userInput.type === 'feedback'" :data="userInput"/>
       <Binary v-else-if="userInput.type === 'binary'" :data="userInput"/>
       <VideoReport v-else-if="userInput.type === 'videoReport'" :data="userInput"/>
+      <Sign v-else-if="userInput.type === 'sign'" :data="userInput"/>
     </div>
   </div>
 </template>
@@ -25,6 +26,7 @@ import Choices from "~/components/controls/Chat/Choices.vue";
 import Feedback from "~/components/controls/Chat/Feedback.vue";
 import Binary from "~/components/controls/Chat/Binary.vue";
 import VideoReport from "~/components/controls/Chat/VideoReport.vue";
+import Sign from "~/components/controls/Chat/Sign.vue";
 
 export default {
   components: {
@@ -32,13 +34,15 @@ export default {
     Choices,
     Feedback,
     Binary,
-    VideoReport
+    VideoReport,
+    Sign
   },
   data() {
     return {
       postedMessagesGroup: [],
       current: {},
-      userInput: false
+      userInput: false,
+      history: []
     };
   },
   computed: {
@@ -49,17 +53,17 @@ export default {
   created() {
     this.$root.$on("next", this.next.bind(this));
     this.$root.$on("answer", this.answer.bind(this));
+    this.$root.$on("imgAnswer", this.imgAnswer.bind(this));
     this.$root.$on("feedback", this.feedback.bind(this));
-    this.$root.$on("videoReport", this.videoReport.bind(this));
   },
   mounted() {
     elementResizeEvent(this.$refs.scrollContainer, this.scroll.bind(this));
     elementResizeEvent(this.$refs.chatContainer, this.scroll.bind(this));
     this.post("start");
-    // this.post("carCrash__claim");
   },
   methods: {
     scroll: function() {
+      if (!this.$refs.scrollContainer) return;
       this.$refs.scrollContainer.scroll({
         top: this.$refs.chatContainer.offsetHeight,
         left: 0,
@@ -68,6 +72,7 @@ export default {
     },
     post: function(key) {
       this.userInput = false;
+      this.history.push(key);
       this.postedMessagesGroup.push(this.actions[key]);
       this.current = this.actions[key];
     },
@@ -77,7 +82,7 @@ export default {
       } else {
         this.userInput = this.current.userInput;
       }
-      setTimeout(this.scroll.bind(this), 100);
+      // setTimeout(this.scroll.bind(this), 100);
     },
     answer: function(answer) {
       this.sendMsg(answer.label);
@@ -97,7 +102,8 @@ export default {
         this.sendMsg(feedback.answer, 2000, "received");
       }, 1000);
     },
-    videoReport: function(answer) {
+    imgAnswer: function(answer) {
+      this.userInput = false;
       this.postedMessagesGroup.push({
         type: "sent",
         messages: [
@@ -109,7 +115,7 @@ export default {
         ],
         noCallback: true
       });
-      setTimeout(this.post.bind(this, answer.key), 2000);
+      setTimeout(this.post.bind(this, answer.key), 1500);
     },
     sendMsg: function(msg, delay = 0, type = "sent") {
       if (
@@ -163,11 +169,13 @@ export default {
     display none
 
 .chatTxt
-  padding-bottom globalMargin
   overflow-y scroll
   -ms-overflow-style: none;
   &::-webkit-scrollbar
     display none
+
+.chatContainer
+  padding-bottom globalMargin
 
 .intro
   margin 0 globalMargin
