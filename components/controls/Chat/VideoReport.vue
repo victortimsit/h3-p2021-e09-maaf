@@ -9,7 +9,7 @@
     <div :class="{hidden: !recording}" class="video">
       <video ref="capture" autoplay/>
       <div class="recording">Enregistrement en cours</div>
-      <div v-if="devices.length > 1" class="reverse softHover" @click="start">
+      <div v-if="devices.length > 1" class="reverse softHover" @click="start(false)">
         <img src="~/assets/icons/cameraReverse.svg" alt="cameraReverse">
       </div>
       <div class="end softHover" @click="stop">Terminé</div>
@@ -67,6 +67,8 @@ export default {
       this.stopTrack();
 
       setStartTime && (this.startTime = Date.now());
+
+      console.log(setStartTime, this.startTime);
 
       const constraints = {
         video: {
