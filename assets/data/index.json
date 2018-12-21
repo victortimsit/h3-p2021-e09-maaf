@@ -551,8 +551,8 @@
           "header": "assets/images/undraw/question.svg",
           "messages": [
             {
-              "txt": "Ravi%gender|assistant||e% de te rencontrer %client%. Je peux répondre à n'importe quoi concernant ton assurance",
-              "delay": 2000
+              "txt": "Je peux répondre à n'importe quoi concernant ton assurance",
+              "delay": 1700
             },
             {
               "txt": "Sur quel sujet porte ta question?",
