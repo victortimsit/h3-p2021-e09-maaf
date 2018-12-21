@@ -60,6 +60,7 @@ export default {
     elementResizeEvent(this.$refs.scrollContainer, this.scroll.bind(this));
     elementResizeEvent(this.$refs.chatContainer, this.scroll.bind(this));
     this.post("start");
+    // this.post("carCrash__claim");
   },
   methods: {
     scroll: function() {

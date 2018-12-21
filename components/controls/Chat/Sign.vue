@@ -78,8 +78,12 @@ export default {
         this.$refs.canvas.width,
         this.$refs.canvas.height
       );
-      this.ctx.rect(0, 0, this.$refs.canvas.width, this.$refs.canvas.height);
-      this.ctx.fill();
+      this.ctx.fillRect(
+        0,
+        0,
+        this.$refs.canvas.width,
+        this.$refs.canvas.height
+      );
     }
   }
 };
