@@ -43,7 +43,7 @@ export default {
       position absolute
       display block
       pointer-events none
-      z-index 100
+      z-index 5
 
     &::before
       bottom 8px
