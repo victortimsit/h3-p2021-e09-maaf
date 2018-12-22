@@ -54,20 +54,16 @@ export default {
           }
           if (!this.devices.length) {
             // No camera found
-            this.error(
-              "Mon téléphone n'a pas de caméra (aucune n'a été trouvée)"
-            );
+            this.error(`${this.data.negative.label} (no camera found)`);
           }
         })
         .catch(e => {
           // No camera found
-          this.error(
-            "Mon téléphone n'a pas de caméra (aucune n'a été trouvée)"
-          );
+          this.error(`${this.data.negative.label} (no camera found)`);
         });
     } else {
       // Browser failure
-      this.error("Mon téléphone ne supporte pas la fonction filmer");
+      this.error(`${this.data.negative.label} (record function not supported)`);
     }
   },
   methods: {
@@ -96,9 +92,7 @@ export default {
         })
         .catch(e => {
           // User failure
-          this.error(
-            "Je ne veux pas donner les permissions nécessaires à l'application pour filmer"
-          );
+          this.error(`${this.data.negative.label} (permission denied)`);
         });
     },
     stop: function() {
