@@ -1,0 +1,920 @@
+{
+  "assistants": [
+    {
+      "name": "Julie",
+      "image": "assets/images/assistants/julie.jpg",
+      "gender": "woman"
+    },
+    {
+      "name": "Enzo",
+      "image": "assets/images/assistants/enzo.jpg",
+      "gender": "man"
+    },
+    {
+      "name": "Matthieu",
+      "image": "assets/images/assistants/matthieu.jpg",
+      "gender": "man"
+    }
+  ],
+  "clients": [
+    {
+      "name": "Cécile",
+      "image": "assets/images/clients/cecile.jpg",
+      "gender": "woman"
+    },
+    {
+      "name": "Jeanne",
+      "image": "assets/images/clients/jeanne.jpg",
+      "gender": "woman"
+    },
+    {
+      "name": "Romain",
+      "image": "assets/images/clients/romain.jpg",
+      "gender": "man"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Chat MAAF",
+      "header": {
+        "title": "Chat MAAF",
+        "cta": "Appeler"
+      },
+      "userInputs": {
+        "choices": {
+          "placeholder": "Autre chose...",
+          "submit": "Envoyer"
+        },
+        "feedback": {
+          "title": "Notez votre expérience",
+          "placeholder": "Laissez un message...",
+          "submit": "Envoyer votre avis"
+        },
+        "sign": {
+          "help": "Signez dans la zone grise",
+          "submit": "Envoyer"
+        },
+        "videoReport": {
+          "start": "Commencer la vidéo",
+          "recording": "Enregistrement en cours",
+          "stop": "Terminé"
+        }
+      },
+      "intro": "Hey %client%, vous avez été mis en contact avec %assistant%, %gender|assistant|il|elle% est là pour vous aider !",
+      "actions": {
+        "start": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ravi%gender|assistant||e% de te rencontrer %client%. Que puis-je pour toi ?",
+              "delay": 2000
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Je vis un sinistre",
+                "key": "issue"
+              },
+              {
+                "label": "J'ai une question",
+                "key": "question"
+              },
+              {
+                "label": "A propos",
+                "key": "about"
+              }
+            ],
+            "default": "issue"
+          }
+        },
+        "about": {
+          "type": "received",
+          "header": "assets/images/undraw/about.svg",
+          "messages": [
+            {
+              "txt": "Ce travail a été réalisé dans le cadre d'un projet pédagogique et à des fins pédagogiques. Les droits d'exploitation n'ont pas fait l'objet d'une vérification, ni d'une acquisition, contact et git :",
+              "delay": 1500
+            },
+            {
+              "link": "https://edhbr.fr",
+              "delay": 2200
+            },
+            {
+              "link": "https://github.com/edhbr/h3-p2021-e09-maaf",
+              "delay": 2800
+            }
+          ],
+          "userInput": {
+            "type": "straight",
+            "key": "start"
+          }
+        },
+        "issue": {
+          "type": "received",
+          "header": "assets/images/undraw/issue.svg",
+          "messages": [
+            {
+              "txt": "Mince ! Ne t'inquiète pas je vais t'aider à gérer tout ça en un rien de temps !",
+              "delay": 2400
+            },
+            {
+              "txt": "De quoi s'agit-il ?",
+              "delay": 3800
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Accident de voiture",
+                "key": "carCrash"
+              },
+              {
+                "label": "Autres sinistres bientôt disponibles !",
+                "class": "disabled"
+              }
+            ],
+            "default": "carCrash"
+          }
+        },
+        "carCrash": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "D'accord, si jamais à un moment tu préfères m'appeler tu as toujours un bouton en haut à droite pour le faire",
+              "delay": 1400
+            },
+            {
+              "txt": "Je vais te poser quelques questions pour mieux comprendre la situation, ça va aller vite ne t'inquiète pas",
+              "delay": 3000
+            },
+            {
+              "txt": "Est-ce qu'il y a des blessés ?",
+              "delay": 3800
+            }
+          ],
+          "userInput": {
+            "type": "binary",
+            "positive": {
+              "label": "Oui",
+              "key": "carCrash__injured"
+            },
+            "negative": {
+              "label": "Non",
+              "key": "carCrash__alone"
+            }
+          }
+        },
+        "carCrash__injured": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Est-ce que je dois appeler les secours ?",
+              "delay": 1400
+            }
+          ],
+          "userInput": {
+            "type": "binary",
+            "positive": {
+              "label": "Oui",
+              "key": "carCrash__injured--call"
+            },
+            "negative": {
+              "label": "Non c'est bon",
+              "key": "carCrash__injured--ok"
+            }
+          }
+        },
+        "carCrash__injured--call": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Je les appelle de suite !",
+              "delay": 1000
+            },
+            {
+              "txt": "Est-ce que tu es seul%gender|client||e% ?",
+              "delay": 2400
+            }
+          ],
+          "userInput": {
+            "type": "binary",
+            "positive": {
+              "label": "Oui",
+              "key": "carCrash__alone--y"
+            },
+            "negative": {
+              "label": "Non",
+              "key": "carCrash__alone--n"
+            }
+          }
+        },
+        "carCrash__injured--ok": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Très bien, fais attention quand même",
+              "delay": 1000
+            },
+            {
+              "txt": "Est-ce que tu es seul%gender|client||e% ?",
+              "delay": 2400
+            }
+          ],
+          "userInput": {
+            "type": "binary",
+            "positive": {
+              "label": "Oui",
+              "key": "carCrash__alone--y"
+            },
+            "negative": {
+              "label": "Non",
+              "key": "carCrash__alone--n"
+            }
+          }
+        },
+        "carCrash__alone": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ouf !",
+              "delay": 400
+            },
+            {
+              "txt": "Est-ce que tu es seul%gender|client||e% ?",
+              "delay": 2000
+            }
+          ],
+          "userInput": {
+            "type": "binary",
+            "positive": {
+              "label": "Oui",
+              "key": "carCrash__alone--y"
+            },
+            "negative": {
+              "label": "Non",
+              "key": "carCrash__alone--n"
+            }
+          }
+        },
+        "carCrash__alone--y": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ne t'inquiète, pas je suis là",
+              "delay": 800
+            },
+            {
+              "txt": "Comment est l'autre automobiliste ?",
+              "delay": 1600
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Plutôt calme",
+                "key": "carCrash__other--cool"
+              },
+              {
+                "label": "Plutôt énervé",
+                "key": "carCrash__other--upset"
+              }
+            ],
+            "default": "carCrash__other--cool"
+          }
+        },
+        "carCrash__alone--n": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ok, tant mieux !",
+              "delay": 800
+            },
+            {
+              "txt": "Comment est l'autre automobiliste ?",
+              "delay": 1600
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Plutôt calme",
+                "key": "carCrash__other--cool"
+              },
+              {
+                "label": "Plutôt énervé",
+                "key": "carCrash__other--upset"
+              }
+            ],
+            "default": "carCrash__other--cool"
+          }
+        },
+        "carCrash__other--cool": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Super ! C'est toujours plus rassurant quand ça se passe comme ça",
+              "delay": 1200
+            }
+          ],
+          "userInput": {
+            "type": "straight",
+            "key": "carCrash__safety"
+          }
+        },
+        "carCrash__other--upset": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "D'accord, tu peux rester dans la voiture si tu t'y sens plus en sécurité, si jamais tu sens que ça ne va pas quand même je peux appeler la police pour toi",
+              "delay": 2000
+            }
+          ],
+          "userInput": {
+            "type": "straight",
+            "key": "carCrash__safety"
+          }
+        },
+        "carCrash__safety": {
+          "type": "received",
+          "header": "assets/images/undraw/safety.svg",
+          "messages": [
+            {
+              "txt": "Pense bien à te mettre en sécurité vis-à-vis de la circulation",
+              "delay": 1200
+            },
+            {
+              "txt": "Je vais maintenant t'aider à réaliser ton constat, sauf si tu as d'autres questions avant",
+              "delay": 2700
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "C'est parti",
+                "key": "carCrash__claim"
+              },
+              {
+                "label": "Il me faudra une dépanneuse",
+                "key": "carCrash__repair"
+              }
+            ],
+            "default": "carCrash__claim"
+          }
+        },
+        "carCrash__repair": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Très bien, je l'appelle déjà comme ça tu n'attendras pas",
+              "delay": 1000
+            },
+            {
+              "txt": "Tu pourras voir où en est le dépanneur sur la carte de l'application",
+              "delay": 2300
+            }
+          ],
+          "userInput": {
+            "type": "straight",
+            "key": "carCrash__claim"
+          }
+        },
+        "carCrash__claim": {
+          "type": "received",
+          "header": "assets/images/undraw/report.svg",
+          "messages": [
+            {
+              "txt": "Alors pour le constat je vais avoir besoin que tu me filmes la scène tout en commentant le plus précisement ce qui c'est passé",
+              "delay": 1900
+            },
+            {
+              "txt": "Tu peux le faire avec l'autre conducteur si tu veux",
+              "delay": 2800
+            }
+          ],
+          "userInput": {
+            "type": "videoReport",
+            "negative": {
+              "label": "Je ne veux pas filmer",
+              "key": "carCrash__claim--n"
+            },
+            "key": "carCrash__claim--y"
+          }
+        },
+        "carCrash__claim--n": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Dommage, je ne peux pas t'aider plus pour l'instant alors",
+              "delay": 1000
+            },
+            {
+              "txt": "N'hésite pas à nous recontacter si jamais tu as des questions qui te viennent à l'esprit ou besoin d'assistance",
+              "delay": 2200
+            },
+            {
+              "txt": "Bon courage à toi %client% !",
+              "delay": 3000
+            }
+          ],
+          "userInput": {
+            "type": "feedback",
+            "scale": [
+              "Je ferais mieux la prochaine fois !",
+              "Merci",
+              "Merci !",
+              "Merci à toi !",
+              "Merci beaucoup !"
+            ]
+          }
+        },
+        "carCrash__claim--y": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Génial !",
+              "delay": 1000
+            },
+            {
+              "txt": "Ok normalement j'ai toutes les informations qu'il me faut pour te rédiger le constat, laisse moi deux minutes et ce sera bon !",
+              "delay": 4000
+            },
+            {
+              "txt": "Chaud devant !",
+              "delay": 8000
+            },
+            {
+              "img": "assets/images/constat.jpg",
+              "delay": 8300
+            }
+          ],
+          "userInput": {
+            "type": "straight",
+            "key": "carCrash__claim--confirm"
+          }
+        },
+        "carCrash__claim--confirm": {
+          "type": "received",
+          "header": "assets/images/undraw/contract.svg",
+          "messages": [
+            {
+              "txt": "Si jamais il faut y apporter des modifications c'est tout a fait encore possible aussi !",
+              "delay": 1500
+            },
+            {
+              "txt": "Mais s'il est correct il te suffit de le signer",
+              "delay": 2700
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Signer",
+                "key": "carCrash__claim--sign"
+              },
+              {
+                "label": "Modifier",
+                "key": "carCrash__claim--edit"
+              }
+            ],
+            "default": "carCrash__claim--edit"
+          }
+        },
+        "carCrash__claim--edit": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Mince, dis-moi ce qu'il faut modifier",
+              "delay": 1200
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [],
+            "default": "carCrash__claim--reconfirm"
+          }
+        },
+        "carCrash__claim--reconfirm": {
+          "type": "received",
+          "messages": [
+            {
+              "img": "assets/images/constat.jpg",
+              "delay": 3000
+            },
+            {
+              "txt": "Et voila",
+              "delay": 3300
+            },
+            {
+              "txt": "Je peux le modifier à nouveau si nécessaire, sinon il te suffit de signer",
+              "delay": 4500
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Signer",
+                "key": "carCrash__claim--sign"
+              },
+              {
+                "label": "Modifier",
+                "key": "carCrash__claim--edit"
+              }
+            ],
+            "default": "carCrash__claim--edit"
+          }
+        },
+        "carCrash__claim--sign": {
+          "type": "received",
+          "messages": [],
+          "userInput": {
+            "type": "sign",
+            "key": "carCrash__claim--signed"
+          }
+        },
+        "carCrash__claim--signed": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Magnifique !",
+              "delay": 800
+            },
+            {
+              "txt": "Tout est bon vis-à-vis de ton assurance du coup, tu n'as plus à t'en faire de ce côté",
+              "delay": 2200
+            },
+            {
+              "html": "Tu pourras retrouver tout les détails liés à ce sinistre dans la partie <strong>Mes Sinistres</strong> de l'application",
+              "delay": 4000
+            },
+            {
+              "txt": "Si tu as d'autres questions n'hésite pas à nous recontacter, bonne fin de soirée",
+              "delay": 5000
+            }
+          ],
+          "userInput": {
+            "type": "feedback",
+            "scale": [
+              "Je ferais mieux la prochaine fois !",
+              "Merci",
+              "Merci !",
+              "Merci à toi !",
+              "Merci beaucoup !"
+            ]
+          }
+        },
+        "question": {
+          "type": "received",
+          "header": "assets/images/undraw/question.svg",
+          "messages": [
+            {
+              "txt": "Je peux répondre à n'importe quoi concernant ton assurance",
+              "delay": 1700
+            },
+            {
+              "txt": "Sur quel sujet porte ta question?",
+              "delay": 3000
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Assurance auto",
+                "key": "auto"
+              },
+              {
+                "label": "Un de mes sinitres",
+                "key": "claim"
+              }
+            ],
+            "default": "auto"
+          }
+        },
+        "question--back": {
+          "type": "received",
+          "header": "assets/images/undraw/question.svg",
+          "messages": [
+            {
+              "txt": "A quel propos pour cette nouvelle question?",
+              "delay": 1000
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Assurance auto",
+                "key": "auto"
+              },
+              {
+                "label": "Un de mes sinitres",
+                "key": "claim"
+              }
+            ],
+            "default": "auto"
+          }
+        },
+        "auto": {
+          "type": "received",
+          "header": "assets/images/undraw/vehicles.svg",
+          "messages": [
+            {
+              "txt": "Une question sur l'assurance auto, ok !",
+              "delay": 1500
+            },
+            {
+              "txt": "Ha ! J'ai vu que tu as plusieurs véhicules assurés chez nous",
+              "delay": 2700
+            },
+            {
+              "txt": "C'est par rapport auquel ?",
+              "delay": 3500
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Peugeot 308",
+                "key": "auto--peugeot"
+              },
+              {
+                "label": "BMW K 1300 GT",
+                "key": "auto--bmw"
+              }
+            ],
+            "default": "auto--peugeot"
+          }
+        },
+        "auto--peugeot": {
+          "type": "received",
+          "messages": [
+            {
+              "html": "Ta Peugeot est assurée <strong>Tous risques CLASSIQUE</strong> chez nous depuis 2012",
+              "delay": 1500
+            },
+            {
+              "txt": "Comme tu le sais il est actuellement en réparation suite à ton sinistre du du 11 décembre dernier",
+              "delay": 2700
+            },
+            {
+              "txt": "Tu as besoin de plus d'informations ?",
+              "delay": 3500
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Etat des réparations",
+                "key": "claim--repair"
+              },
+              {
+                "label": "Une autre question",
+                "key": "question--back"
+              },
+              {
+                "label": "C'est tout merci",
+                "key": "end"
+              }
+            ],
+            "default": "question--back"
+          }
+        },
+        "auto--bmw": {
+          "type": "received",
+          "messages": [
+            {
+              "html": "Ta BMW est assurée au <strong>Tiers CLASSIQUE</strong> chez nous depuis septembre",
+              "delay": 1500
+            },
+            {
+              "txt": "Du coup en cas d'accident seuls les dégats causés à autrui seront couvert, les réparations de ta moto seront à tes frais",
+              "delay": 2700
+            },
+            {
+              "txt": "Tu as besoin de plus d'informations ?",
+              "delay": 3500
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Une autre question",
+                "key": "question--back"
+              },
+              {
+                "label": "C'est tout merci",
+                "key": "end"
+              }
+            ],
+            "default": "question--back"
+          }
+        },
+        "claim": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Une question sur tes sinistres, d'accord",
+              "delay": 1200
+            },
+            {
+              "txt": "Il s'agit duquel ?",
+              "delay": 2200
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Du plus récent (accident 11/12)",
+                "key": "claim--info"
+              }
+            ],
+            "default": "claim--info"
+          }
+        },
+        "claim--info": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Il s'agissait d'une collision entre ta Peugeot 308 et un scooter d'un autre usager près de Croix de Chavaux à Montreuil",
+              "delay": 1200
+            },
+            {
+              "txt": "Que veux-tu savoir à propos de ce dernier ?",
+              "delay": 2400
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Etat des réparations",
+                "key": "claim--repair"
+              },
+              {
+                "label": "Ma couverture",
+                "key": "claim--payout"
+              }
+            ],
+            "default": "claim--repair"
+          }
+        },
+        "claim--repair": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ton véhicule a dû passer au garage car un de tes rétroviseurs avait été arraché",
+              "delay": 1700
+            },
+            {
+              "txt": "Le garage vient de recevoir la pièce et ils l'installent aujourd'hui normalement, super !",
+              "delay": 3400
+            },
+            {
+              "txt": "Si tout se passe bien tu devrais pouvoir le récupérer en fin de semaine",
+              "delay": 5000
+            },
+            {
+              "txt": "Il te faut autre chose ?",
+              "delay": 6000
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Informations du garage",
+                "key": "claim--garage"
+              },
+              {
+                "label": "A propos de ma couverture",
+                "key": "claim--payout"
+              },
+              {
+                "label": "Une autre question",
+                "key": "question--back"
+              },
+              {
+                "label": "C'est tout bon merci !",
+                "key": "end"
+              }
+            ],
+            "default": "claim--garage"
+          }
+        },
+        "claim--garage": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Ta voiture est au \"Garage Auto #1\" au 72 Rue Robespierre à Montreuil",
+              "delay": 1700
+            },
+            {
+              "img": "assets/images/garageAuto1.jpg",
+              "delay": 3000
+            },
+            {
+              "link": "https://goo.gl/LfhnAe",
+              "delay": 4000
+            },
+            {
+              "html": "Tu peux aussi les contacter en cas de besoin au <a href=\"tel:0142879993\">01.42.87.99.93</a>",
+              "delay": 5000
+            },
+            {
+              "txt": "Est-ce que je peux encore autre chose ?",
+              "delay": 6800
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Une autre question",
+                "key": "question--back"
+              },
+              {
+                "label": "C'est tout nickel merci !",
+                "key": "end"
+              }
+            ],
+            "default": "question--back"
+          }
+        },
+        "claim--payout": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Tu étais en tort sur cet incident mais étant donné que tu as souscrit une garantie dommages tous accidents tu seras quand même remboursé, ne t'inquiète pas",
+              "delay": 1700
+            },
+            {
+              "txt": "On doit juste attendre que le garagiste finisse de réparer ta voiture pour pouvoir te rembourser du coup",
+              "delay": 3000
+            },
+            {
+              "txt": "Est-ce que je peux encore autre chose ?",
+              "delay": 4200
+            }
+          ],
+          "userInput": {
+            "type": "choices",
+            "choices": [
+              {
+                "label": "Etat des réparations",
+                "key": "claim--repair"
+              },
+              {
+                "label": "Une autre question",
+                "key": "question--back"
+              },
+              {
+                "label": "C'est tout nickel merci !",
+                "key": "end"
+              }
+            ],
+            "default": "question--back"
+          }
+        },
+        "end": {
+          "type": "received",
+          "messages": [
+            {
+              "txt": "Super !",
+              "delay": 1000
+            },
+            {
+              "txt": "Content%gender|assistant||e% d'avoir pu t'aider %client%, si tu as d'autres question n'hésite pas à refaire appel à nous",
+              "delay": 2700
+            },
+            {
+              "txt": "Bonne fin de journée à toi !",
+              "delay": 4000
+            }
+          ],
+          "userInput": {
+            "type": "feedback",
+            "scale": [
+              "Je ferais mieux la prochaine fois !",
+              "Merci",
+              "Merci !",
+              "Merci à toi !",
+              "Merci beaucoup !"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -4,8 +4,8 @@
       <div class="back">
         <img src="~/assets/icons/arrowBack.svg" alt="arrowBack">
       </div>
-      <div class="mainTxt title">{{ title }}</div>
-      <div class="mainTxt cta softHover">Appeler</div>
+      <div class="mainTxt title">{{ data.title }}</div>
+      <div class="mainTxt cta softHover">{{ data.cta }}</div>
     </Container>
   </header>
 </template>
@@ -13,9 +13,9 @@
 <script>
 export default {
   props: {
-    title: {
-      type: String,
-      default: () => "Sinistre"
+    data: {
+      type: Object,
+      default: () => ({})
     }
   }
 };

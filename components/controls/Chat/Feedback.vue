@@ -2,7 +2,9 @@
   <div class="feedback">
     <form @submit.prevent="$root.$emit('feedback', feedback)">
       <div class="wrapper">
-        <div class="title uppercase centered">Notez votre expérience</div>
+        <div
+          class="title uppercase centered"
+        >{{ data.options ? data.options.title : this.$store.state.scenario.userInputs.feedback.title }}</div>
         <div class="stars">
           <input id="star5" v-model="rating" type="radio" value="5">
           <label for="star5">5 stars</label>
@@ -17,8 +19,16 @@
         </div>
       </div>
       <template v-if="rating > 0">
-        <input v-model="message" type="text" placeholder="Laissez un message">
-        <input class="softHover uppercase" type="submit" value="Envoyer votre avis">
+        <input
+          v-model="message"
+          :placeholder="data.options ? data.options.placeholder : this.$store.state.scenario.userInputs.feedback.placeholder"
+          type="text"
+        >
+        <input
+          :value="data.options ? data.options.submit : this.$store.state.scenario.userInputs.feedback.submit"
+          class="softHover uppercase"
+          type="submit"
+        >
       </template>
     </form>
   </div>

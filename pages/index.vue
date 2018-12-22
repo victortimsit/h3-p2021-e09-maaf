@@ -1,6 +1,6 @@
 <template>
   <div class="chat">
-    <Header :title="$store.state.scenario.name"/>
+    <Header :data="$store.state.scenario.header"/>
     <ChatArea :data="$store.state.scenario"/>
   </div>
 </template>
@@ -14,8 +14,10 @@ export default {
     Header,
     ChatArea
   },
-  head: {
-    title: "Chat MAAF"
+  head() {
+    return {
+      title: this.$store.state.scenario.name
+    };
   },
   created() {
     this.$store.commit("init");

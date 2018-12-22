@@ -12,8 +12,16 @@
       <li>
         <Container>
           <form @submit.prevent="manual && $root.$emit('answer', manualChoice)">
-            <input v-model="manual" type="text" placeholder="Autre chose...">
-            <input class="softHover uppercase" type="submit" value="Envoyer">
+            <input
+              v-model="manual"
+              :placeholder="data.options ? data.options.placeholder : this.$store.state.scenario.userInputs.choices.placeholder"
+              type="text"
+            >
+            <input
+              :value="data.options ? data.options.submit : this.$store.state.scenario.userInputs.choices.submit"
+              class="softHover uppercase"
+              type="submit"
+            >
           </form>
         </Container>
       </li>

@@ -1,6 +1,9 @@
 <template>
   <div class="videoReport centered">
-    <div class="option positive softHover" @click="start(true)">Commencer la vidéo</div>
+    <div
+      class="option positive softHover"
+      @click="start(true)"
+    >{{ data.options ? data.options.start : this.$store.state.scenario.userInputs.videoReport.start }}</div>
     <div
       :class="data.negative.class"
       class="option negative softHover"
@@ -8,11 +11,16 @@
     >{{ data.negative.label }}</div>
     <div :class="{hidden: !recording}" class="video">
       <video ref="capture" autoplay/>
-      <div class="recording">Enregistrement en cours</div>
+      <div
+        class="recording"
+      >{{ data.options ? data.options.recording : this.$store.state.scenario.userInputs.videoReport.recording }}</div>
       <div v-if="devices.length > 1" class="reverse softHover" @click="start(false)">
         <img src="~/assets/icons/cameraReverse.svg" alt="cameraReverse">
       </div>
-      <div class="end softHover" @click="stop">Terminé</div>
+      <div
+        class="end softHover"
+        @click="stop"
+      >{{ data.options ? data.options.stop : this.$store.state.scenario.userInputs.videoReport.stop }}</div>
     </div>
   </div>
 </template>

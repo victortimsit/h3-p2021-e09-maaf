@@ -78,7 +78,7 @@ export default {
 <style scoped lang="stylus">
 .header
   text-align center
-  
+
   img
     width 160px
     max-height 100px

@@ -1,6 +1,8 @@
 <template>
   <div class="sign centered">
-    <div class="help centered">Signez dans la zone grise</div>
+    <div
+      class="help centered"
+    >{{ data.options ? data.options.help : this.$store.state.scenario.userInputs.sign.help }}</div>
     <div class="erase softHover" @click="clear">
       <img src="~/assets/icons/erase.svg" alt="erase">
     </div>
@@ -15,7 +17,10 @@
       @touchend.prevent="endPath"
       @touchleave.prevent="endPath"
     >Browser does not support canvas</canvas>
-    <div class="send uppercase softHover" @click="send">Envoyer</div>
+    <div
+      class="send uppercase softHover"
+      @click="send"
+    >{{ data.options ? data.options.submit : this.$store.state.scenario.userInputs.sign.submit }}</div>
   </div>
 </template>
 

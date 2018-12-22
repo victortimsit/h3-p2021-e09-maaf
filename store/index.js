@@ -1,6 +1,6 @@
 import Vuex from "vuex";
 
-import data from "~/assets/data/index.json";
+import data from "~/assets/data/en_index.json";
 
 const trueData = {
   assistant:
