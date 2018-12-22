@@ -113,6 +113,7 @@ export default {
     color white
     background blue
     border-radius 18px 4px 4px 18px
+    text-align right
 
     &:first-child
       border-radius 18px 18px 4px 18px
