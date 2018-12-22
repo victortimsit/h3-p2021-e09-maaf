@@ -18,7 +18,7 @@ module.exports = {
       {
         name: "viewport",
         content:
-          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+          "width=device-width, initial-scale=0.8, maximum-scale=1, user-scalable=0"
       },
       { hid: "description", name: "description", content: pkg.description },
       { name: "msapplication-TileColor", content: "#2b5797" },
